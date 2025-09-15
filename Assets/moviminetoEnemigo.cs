@@ -2,25 +2,25 @@ using UnityEngine;
 using UnityEngine.AI;
 public class moviminetoEnemigo : MonoBehaviour
 {
-   public NavMeshAgent agent;
+   NavMeshAgent agent;
    public Transform player;
    public LayerMask capaPiso, capaJugador;
    public Renderer colorEnemigo;
-
+ 
 
     //patrullar
     Vector3 walkPoint;
     bool walkPointSet;
-    float walkPointRange;
+   [SerializeField] float walkPointRange;
     public Material verdeNormal;
     //ataque
-    float frecuenciaAtaque;
+   [SerializeField] float frecuenciaAtaque;
     bool yaAtaco;
-    float rangoVista, rangoAtaque;
+   [SerializeField] float rangoVista, rangoAtaque;
     bool jugadorEnRangoVista, jugadorEnRangoAtaque;
     public Material rojoAtaque;
 
-    void Awake()
+    void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         colorEnemigo = GetComponent<Renderer>();
