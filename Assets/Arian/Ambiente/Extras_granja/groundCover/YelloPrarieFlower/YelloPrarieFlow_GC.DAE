@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>RonMain</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.2.5;  Revision: 673;  Platform: Win32;  Configuration: Release Max9</authoring_tool>
+      <source_data>file:///E:/3TDS%20Torque%20Model%20Library/Ground%20Cover/YelloPraireFlower/YelloPrarieFlower_GC-final.max</source_data>
+    </contributor>
+    <created>2012-09-20T09:21:52</created>
+    <modified>2012-09-20T09:21:52</modified>
+    <unit name="feet" meter="0.3048"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="YelloPrarieLeaf">
+      <profile_COMMON>
+        <newparam sid="YelloPrarie01_png-surface">
+          <surface type="2D">
+            <init_from>YelloPrarie01_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="YelloPrarie01_png-sampler">
+          <sampler2D>
+            <source>YelloPrarie01_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.5882353 0.5882353 0.5882353 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="YelloPrarie01_png-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0.9 0.9 0.9 1</color>
+            </specular>
+            <shininess>
+              <float>9.999999</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <texture texture="YelloPrarie01_png-sampler" texcoord="CHANNEL1"/>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>1</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="YelloPrarieLeaf-material" name="YelloPrarieLeaf">
+      <instance_effect url="#YelloPrarieLeaf"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-YelloPrarie_GC128" name="YelloPrarie_GC128">
+      <mesh>
+        <source id="geom-YelloPrarie_GC128-positions">
+          <float_array id="geom-YelloPrarie_GC128-positions-array" count="81">-8.883335 -9.924088 -4.673037 9.67889e-10 -9.84252 -4.16185e-9 8.883336 -9.924088 -4.673037 -9.0249 -0.08286762 -4.747506 9.83314e-10 0 0 9.024901 -0.08286762 -4.747507 -9.166465 9.758351 -4.821976 9.98738e-10 9.842519 2.98023e-8 9.166466 9.758351 -4.821977 8.340373 -9.781998 -5.584519 0.002474189 -9.843167 0.004153728 -0.283762 -12.17454 9.763269 9.798686 -0.2853632 -3.448533 1.327914 -0.3475075 2.229201 1.037116 -2.716035 12.14384 11.257 9.21127 -1.312546 2.653355 9.148151 4.454248 2.357996 6.742471 14.52441 7.078011 -11.72341 6.869331 -8.54403e-4 -9.843371 0.005462408 -9.859806 -10.89731 1.570034 6.733171 -2.366979 9.904699 -0.4585035 -0.4569798 2.931448 -10.47457 -1.527714 4.520953 6.38833 6.989452 12.94007 -0.9161526 8.929411 5.857434 -11.08933 7.84188 7.471872</float_array>
+          <technique_common>
+            <accessor source="#geom-YelloPrarie_GC128-positions-array" count="27" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-YelloPrarie_GC128-normals">
+          <float_array id="geom-YelloPrarie_GC128-normals-array" count="81">-0.465559 -9.44411e-9 0.8850169 0 -5.39e-9 1 -1.07189e-8 5.77617e-9 0.9999999 -0.4655589 8.18921e-9 0.8850169 0.4655589 -1.83662e-8 0.8850169 0.4655589 3.04177e-8 0.885017 0 1.67073e-8 1 -0.465559 6.87934e-8 0.8850169 0.465559 3.44302e-8 0.8850169 -0.5385369 0.2627656 -0.8005824 -0.8638529 0.2260648 -0.45017 -0.8638527 0.2260648 -0.4501699 -0.538537 0.2627656 -0.8005825 -0.9905118 0.1373768 0.003766369 -0.9905117 0.1373769 0.003766358 -0.8638528 0.2260649 -0.4501699 -0.5385368 0.2627657 -0.8005825 -0.9905117 0.1373769 0.003766408 0.7078152 0.2414508 -0.6638518 0.2982718 0.2972802 -0.9070051 0.2982718 0.2972802 -0.9070052 0.7078151 0.2414509 -0.6638518 -0.1798639 0.2847452 -0.941578 -0.179864 0.2847452 -0.941578 0.2982718 0.2972803 -0.9070052 0.7078153 0.241451 -0.6638516 -0.179864 0.2847452 -0.941578</float_array>
+          <technique_common>
+            <accessor source="#geom-YelloPrarie_GC128-normals-array" count="27" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-YelloPrarie_GC128-map0">
+          <float_array id="geom-YelloPrarie_GC128-map0-array" count="144">0.005184591 1 0.005184591 1 0.9998414 0.9998414 0.9998468 9.85292e-4 8.3214e-4 0.05534121 0.0684792 0.9868578 0.05534121 0.0684792 0.9868578 0.9998468 9.85292e-4 8.3214e-4 1 1 1 0.02696228 1 0.02696228 1 1 1 0.005184591 1 0.005184591 0.05534121 0.0684792 0.9868578 0.04603052 0.9999015 0.04612901 0.04603052 0.9999015 0.04612901 0.05534121 0.0684792 0.9868578 0.02696228 1 0.02696228 0.1375158 0.9994581 0.1380577 0.005184591 1 0.005184591 1 0.9998414 0.9998414 0.9998468 9.85292e-4 8.3214e-4 0.05534121 0.0684792 0.9868578 0.05534121 0.0684792 0.9868578 0.9998468 9.85292e-4 8.3214e-4 1 1 1 0.02696228 1 0.02696228 1 1 1 0.005184591 1 0.005184591 0.05534121 0.0684792 0.9868578 0.04603052 0.9999015 0.04612901 0.04603052 0.9999015 0.04612901 0.05534121 0.0684792 0.9868578 0.02696228 1 0.02696228 0.1375158 0.9994581 0.1380577 0.005184591 1 0.005184591 1 0.9998414 0.9998414 0.9998468 9.85292e-4 8.3214e-4 0.05534121 0.0684792 0.9868578 0.05534121 0.0684792 0.9868578 0.9998468 9.85292e-4 8.3214e-4 1 1 1 0.02696228 1 0.02696228 1 1 1 0.005184591 1 0.005184591 0.05534121 0.0684792 0.9868578 0.04603052 0.9999015 0.04612901 0.04603052 0.9999015 0.04612901 0.05534121 0.0684792 0.9868578 0.02696228 1 0.02696228 0.1375158 0.9994581 0.1380577</float_array>
+          <technique_common>
+            <accessor source="#geom-YelloPrarie_GC128-map0-array" count="48" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-YelloPrarie_GC128-map1">
+          <float_array id="geom-YelloPrarie_GC128-map1-array" count="81">4.99576e-4 4.99785e-4 0.5 0.4999999 4.99666e-4 0.5 0.9995003 4.99547e-4 0.5 4.99696e-4 0.5000001 0.5 0.5 0.5 0.5 0.9995004 0.4999999 0.5 4.99815e-4 0.9995005 0.5 0.5000001 0.9995003 0.5 0.9995005 0.9995002 0.5 4.99576e-4 4.99785e-4 0.5 0.4999999 4.99666e-4 0.5 0.9995003 4.99547e-4 0.5 4.99696e-4 0.5000001 0.5 0.5 0.5 0.5 0.9995004 0.4999999 0.5 4.99815e-4 0.9995005 0.5 0.5000001 0.9995003 0.5 0.9995005 0.9995002 0.5 4.99576e-4 4.99785e-4 0.5 0.4999999 4.99666e-4 0.5 0.9995003 4.99547e-4 0.5 4.99696e-4 0.5000001 0.5 0.5 0.5 0.5 0.9995004 0.4999999 0.5 4.99815e-4 0.9995005 0.5 0.5000001 0.9995003 0.5 0.9995005 0.9995002 0.5</float_array>
+          <technique_common>
+            <accessor source="#geom-YelloPrarie_GC128-map1-array" count="27" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-YelloPrarie_GC128-vertices">
+          <input semantic="POSITION" source="#geom-YelloPrarie_GC128-positions"/>
+        </vertices>
+        <triangles material="YelloPrarieLeaf_1" count="24">
+          <input semantic="VERTEX" source="#geom-YelloPrarie_GC128-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-YelloPrarie_GC128-normals" offset="1"/>
+          <input semantic="COLOR" source="#geom-YelloPrarie_GC128-map0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#geom-YelloPrarie_GC128-map1" offset="3" set="1"/>
+          <p>0 0 1 0 1 1 2 1 4 2 3 4 4 2 3 4 3 3 0 3 0 0 1 0 1 1 5 1 2 4 6 2 5 5 7 5 5 5 7 5 4 2 4 4 1 1 5 1 3 3 9 3 4 2 10 4 7 6 11 7 7 6 11 7 6 7 8 6 3 3 9 3 4 2 13 4 5 5 14 5 8 8 15 8 8 8 15 8 7 6 12 7 4 2 13 4 9 9 17 9 10 10 18 10 13 11 19 13 13 11 19 13 12 12 16 12 9 9 17 9 10 10 21 10 11 13 22 11 14 14 23 14 14 14 23 14 13 11 20 13 10 10 21 10 12 12 25 12 13 11 26 13 16 15 27 16 16 15 27 16 15 16 24 15 12 12 25 12 13 11 29 13 14 14 30 14 17 17 31 17 17 17 31 17 16 15 28 16 13 11 29 13 18 18 33 18 19 19 34 19 22 20 35 22 22 20 35 22 21 21 32 21 18 18 33 18 19 19 37 19 20 22 38 20 23 23 39 23 23 23 39 23 22 20 36 22 19 19 37 19 21 21 41 21 22 20 42 22 25 24 43 25 25 24 43 25 24 25 40 24 21 21 41 21 22 20 45 22 23 23 46 23 26 26 47 26 26 26 47 26 25 24 44 25 22 20 45 22</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="YelloPrarie01_png">
+      <init_from>file:///C:/Users/RonMain/Documents/3dsmax/sceneassets/GroundCover/YelloPrarie01.png</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-Base01" name="Base01">
+        <matrix>1 0 0 0.02883876 0 1 0 -0.1441938 0 0 1 0 0 0 0 1</matrix>
+        <node id="node-Start01" name="Start01">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="node-YelloPrarie_GC128" name="YelloPrarie_GC128">
+            <matrix>-0.1333079 -0.03698285 0.2372391 -0.02531839 0.2401044 -0.02053317 0.1317171 0.1348697 -7.45058e-9 0.2713517 0.04230062 0 0 0 0 1</matrix>
+            <node>
+              <matrix>1 0 0 0 0 1 0 9.860894 0 0 1 0 0 0 0 1</matrix>
+              <instance_geometry url="#geom-YelloPrarie_GC128">
+                <bind_material>
+                  <technique_common>
+                    <instance_material symbol="YelloPrarieLeaf_1" target="#YelloPrarieLeaf-material">
+                      <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+                      <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+                    </instance_material>
+                  </technique_common>
+                </bind_material>
+              </instance_geometry>
+            </node>
+          </node>
+        </node>
+        <node id="node-detail128" name="detail128">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        </node>
+        <node id="node-BB__detail64" name="BB__detail64">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>
