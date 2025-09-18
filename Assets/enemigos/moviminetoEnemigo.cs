@@ -1,24 +1,24 @@
 using UnityEngine;
 using UnityEngine.AI;
-public class movimientoEnemigo : MonoBehaviour
+abstract class moviminetoEnemigo : MonoBehaviour
 {
    NavMeshAgent agent;
-  [SerializeField] protected Transform player;
-  [SerializeField] protected LayerMask capaPiso, capaJugador;
-  protected Renderer colorEnemigo;
+   protected Transform player;
+   protected LayerMask capaPiso, capaJugador;
+   protected Renderer colorEnemigo;
  
 
     //patrullar
     Vector3 walkPoint;
     bool walkPointSet;
    [SerializeField] protected float walkPointRange;
-    [SerializeField] protected Material verdeNormal;
+    protected Material verdeNormal;
     //ataque
    [SerializeField] protected float frecuenciaAtaque;
     bool yaAtaco;
    [SerializeField] protected float rangoVista, rangoAtaque;
     bool jugadorEnRangoVista, jugadorEnRangoAtaque;
-    [SerializeField] protected Material rojoAtaque;
+    protected Material rojoAtaque;
 
     void Start()
     {
