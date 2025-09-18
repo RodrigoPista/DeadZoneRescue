@@ -5929,7 +5929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7807977279073776333, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
       propertyPath: jumbForce
-      value: 5
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7807977279073776333, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
       propertyPath: groundDrag
@@ -5937,7 +5937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7807977279073776333, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
       propertyPath: rotationSpeed
-      value: 9.37
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8419296260634341894, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
       propertyPath: m_Name
