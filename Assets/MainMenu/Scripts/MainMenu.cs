@@ -3,17 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "SampleScene";
+    [SerializeField] private string startScene = "SampleScene";
 
     // Llamado por el botón START
     public void StartGame()
     {
-        if (string.IsNullOrEmpty(sceneToLoad))
+        if (string.IsNullOrEmpty(startScene))
         {
             Debug.LogError("Scene name to load is empty.");
             return;
         }
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(startScene);
     }
 
     // Llamado por el botón OPTIONS (por ahora placeholder)
