@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
-abstract class moviminetoEnemigo : MonoBehaviour
+public abstract class moviminetoEnemigo : MonoBehaviour
 {
-   NavMeshAgent agent;
-   protected Transform player;
-   protected LayerMask capaPiso, capaJugador;
+   protected NavMeshAgent agent;
+  [SerializeField] protected Transform player;
+  [SerializeField] protected LayerMask capaRutaEnemigo, capaJugador;
    protected Renderer colorEnemigo;
  
 
@@ -12,13 +12,13 @@ abstract class moviminetoEnemigo : MonoBehaviour
     Vector3 walkPoint;
     bool walkPointSet;
    [SerializeField] protected float walkPointRange;
-    protected Material verdeNormal;
+    [SerializeField]protected Material verdeNormal;
     //ataque
    [SerializeField] protected float frecuenciaAtaque;
-    bool yaAtaco;
+   protected bool yaAtaco;
    [SerializeField] protected float rangoVista, rangoAtaque;
     bool jugadorEnRangoVista, jugadorEnRangoAtaque;
-    protected Material rojoAtaque;
+    [SerializeField] protected Material rojoAtaque;
 
     void Start()
     {
@@ -56,16 +56,17 @@ abstract class moviminetoEnemigo : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
             
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, capaPiso))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, capaRutaEnemigo))
         {
             walkPointSet = true;
         }
     }
-       void Perseguir()
-        {
-            agent.SetDestination(player.position);
+    protected void Perseguir()
+    {
+        agent.SetDestination(player.position);
+            
         }
-        void Atacar()
+       protected virtual void Atacar()
         {
             agent.SetDestination(transform.position);
 
@@ -78,7 +79,7 @@ abstract class moviminetoEnemigo : MonoBehaviour
             
             }
         }
-    void AttackReset()
+   protected void AttackReset()
     {
         yaAtaco = false;
         colorEnemigo.material = verdeNormal;
