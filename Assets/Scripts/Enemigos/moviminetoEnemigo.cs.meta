@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0b23a1385e1398544947a3c3753244d5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {fileID: 2348345388324619328, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
+  - verdeNormal: {instanceID: 0}
+  - rojoAtaque: {fileID: 2100000, guid: 6a6f6d0a01d4b734eb306d0374bb49f4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
