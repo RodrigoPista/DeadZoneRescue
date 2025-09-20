@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - player: {instanceID: 0}
+  - player: {fileID: 2348345388324619328, guid: d5cb33ea13eaa471cabe48fe097abe23, type: 3}
   - verdeNormal: {instanceID: 0}
   - rojoAtaque: {fileID: 2100000, guid: 6a6f6d0a01d4b734eb306d0374bb49f4, type: 2}
   executionOrder: 0
