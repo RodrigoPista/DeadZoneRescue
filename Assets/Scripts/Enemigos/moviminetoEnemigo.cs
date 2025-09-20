@@ -8,7 +8,7 @@ public abstract class moviminetoEnemigo : MonoBehaviour
    protected NavMeshAgent agent;
 
   [SerializeField] protected Transform player;
-   [Header("")]
+  [Header("")]
   [Tooltip("Capa donde los enemigos patrullan")]
   [SerializeField] protected LayerMask capaRutaEnemigo;
   [SerializeField] protected LayerMask capaJugador;
@@ -17,8 +17,8 @@ public abstract class moviminetoEnemigo : MonoBehaviour
     //patrullar
     Vector3 walkPoint;
     bool walkPointSet;
-    [Header("")]
-    [Tooltip("Que tan lejos los enemigos caminan al patrullar")]
+   [Header("")]
+   [Tooltip("Que tan lejos los enemigos caminan al patrullar")]
    [SerializeField] protected float walkPointRange;
     
     //ataque

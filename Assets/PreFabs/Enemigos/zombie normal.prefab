@@ -136,6 +136,7 @@ MonoBehaviour:
   frecuenciaAtaque: 2
   rangoVista: 12
   rangoAtaque: 3
+  health: 100
 --- !u!195 &-6160447882696796002
 NavMeshAgent:
   m_ObjectHideFlags: 0
