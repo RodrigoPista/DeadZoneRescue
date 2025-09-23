@@ -3,18 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Ground
-  - SpawnPoint
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - piso
   - Water
   - UI
-  - 
-  - 
+  - jugador
+  - rutaEnemigos
   - 
   - 
   - 

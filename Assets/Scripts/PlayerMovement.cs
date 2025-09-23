@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+   
+
     [Header("Movement Settings")]
     [Tooltip("Velocidad de movimiento del jugador.")]
     [SerializeField] float moveSpeed = 5f;
@@ -119,4 +121,5 @@ public class PlayerMovement : MonoBehaviour
         Vector3 checkPos = transform.position + groundCheckOffset;
         Gizmos.DrawWireSphere(checkPos, radioSphereCheck);
     }
+    
 }
