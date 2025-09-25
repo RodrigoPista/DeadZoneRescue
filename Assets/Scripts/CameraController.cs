@@ -11,7 +11,9 @@ public class CameraController : MonoBehaviour
     public Vector2 pitchMinMax = new Vector2(-40f, 80f);
 
     [Header("Shoulder Offset")]
-    public float horizontalOffset = 1.5f;
+    public float horizontalOffset = 1.5f;       // default magnitude
+    public KeyCode switchShoulderKey = KeyCode.V;
+    public float shoulderSwitchSpeed = 5f;
 
     [Header("Aiming Zoom")]
     public float aimDistance = 3f;
@@ -22,8 +24,11 @@ public class CameraController : MonoBehaviour
     float yaw;
     float pitch;
 
-    // keep our own smoothed distance
     float currentDistance;
+    float currentHorizontalOffset; // smoothed offset
+
+    // track which side we’re on
+    bool onLeftShoulder = false;
 
     void Start()
     {
@@ -31,12 +36,19 @@ public class CameraController : MonoBehaviour
         yaw = angles.y;
         pitch = angles.x;
 
-        currentDistance = distance; // start at normal distance
+        currentDistance = distance;
+        currentHorizontalOffset = horizontalOffset;
     }
 
     void LateUpdate()
     {
         if (target == null) return;
+
+        // handle side switch input
+        if (Input.GetKeyDown(switchShoulderKey))
+        {
+            onLeftShoulder = !onLeftShoulder;
+        }
 
         // Orbit input
         yaw += Input.GetAxis("Mouse X") * sensitivity;
@@ -45,15 +57,19 @@ public class CameraController : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
 
-        // Smooth distance
+        // Smooth distance for aim zoom
         float desiredDistance = (playerMovement != null && playerMovement.IsAiming) ? aimDistance : distance;
         currentDistance = Mathf.Lerp(currentDistance, desiredDistance, Time.deltaTime * zoomSpeed);
 
-        // Compute base offset in camera space
-        Vector3 baseOffset = new Vector3(0, height, -currentDistance);
-        Vector3 shoulderOffset = rotation * new Vector3(horizontalOffset, 0, 0);
+        // Smooth horizontal offset flip
+        float targetOffset = (onLeftShoulder ? -horizontalOffset : horizontalOffset);
+        currentHorizontalOffset = Mathf.Lerp(currentHorizontalOffset, targetOffset, Time.deltaTime * shoulderSwitchSpeed);
 
-        // Final position & rotation
+        // Compute camera offset
+        Vector3 baseOffset = new Vector3(0, height, -currentDistance);
+        Vector3 shoulderOffset = rotation * new Vector3(currentHorizontalOffset, 0, 0);
+
+        // Final camera transform
         transform.position = target.position + rotation * baseOffset + shoulderOffset;
         transform.rotation = rotation;
     }
