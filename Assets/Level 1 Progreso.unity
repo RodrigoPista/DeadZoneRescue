@@ -5236,9 +5236,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3983849633683329391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2239e2ca0a1e146b342e8a0672c10d, type: 3}
+  m_Script: {fileID: 11500000, guid: 75c9fea568ed84167bc028af665ac957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotationSpeed: 100
+  groundDrag: 5
+  jumbForce: 50
+  jumpCooldown: 0.25
+  playerHeight: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  radioSphereCheck: 0.1
+  groundCheckOffset: {x: 0, y: -0.9, z: 0}
 --- !u!1001 &4894794933419282066
 PrefabInstance:
   m_ObjectHideFlags: 0
