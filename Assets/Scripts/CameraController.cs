@@ -32,6 +32,12 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
+        if(target == null)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player) target = player.transform;
+        }
+
         Vector3 angles = transform.eulerAngles;
         yaw = angles.y;
         pitch = angles.x;
