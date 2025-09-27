@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Hospital.unity
     guid: ccc188fb827df48f8929f36a58fca40e
   - enabled: 1
+    path: Assets/Scenes/Laboratorio.unity
+    guid: e411eff905d7e4b2baf72561637f03c3
+  - enabled: 1
     path: Assets/Scenes/Mercado.unity
     guid: e2b3e5797fffc6b46a4d11397900c63a
   m_configObjects:
