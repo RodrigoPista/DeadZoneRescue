@@ -119,6 +119,7 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
         currentAmmo += ammoToLoad;
         totalAmmo -= ammoToLoad;
         isReloading = false;
+
     }
 
     public int CurrentAmmo => currentAmmo;
