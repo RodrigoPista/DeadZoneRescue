@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e9db3a9aeffb84d89ea2abb74bdcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1987116990508156039}
   capaRutaEnemigo:
     serializedVersion: 2
     m_Bits: 128
