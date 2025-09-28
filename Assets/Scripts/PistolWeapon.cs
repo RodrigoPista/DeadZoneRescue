@@ -70,11 +70,9 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
 
         Transform spawnPoint = muzzleOverride != null ? muzzleOverride : controller.weaponSpawnPoint;
 
-        // ======= NEW AIMING RAYCAST =======
         Vector3 targetPoint;
         if (controller.IsAiming && playerCamera != null)
         {
-            // Raycast from center of screen
             Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
             if (Physics.Raycast(ray, out RaycastHit hit, maxAimDistance))
             {
@@ -87,7 +85,6 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
         }
         else
         {
-            // Not aiming, shoot straight from muzzle
             targetPoint = spawnPoint.position + spawnPoint.forward * maxAimDistance;
         }
 

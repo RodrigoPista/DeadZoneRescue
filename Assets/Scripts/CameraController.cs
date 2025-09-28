@@ -38,6 +38,8 @@ public class CameraController : MonoBehaviour
 
         currentDistance = distance;
         currentHorizontalOffset = horizontalOffset;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void LateUpdate()
