@@ -3,7 +3,7 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.LowLevelPhysics;
-public abstract class moviminetoEnemigo : MonoBehaviour
+public abstract class moviminetoEnemigo : HealthSystem
 {
    protected NavMeshAgent agent;
 

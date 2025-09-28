@@ -3,12 +3,12 @@ using System.ComponentModel.Design;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class EnemigoRapido : moviminetoEnemigo, IDamageable
+public class EnemigoRapido : moviminetoEnemigo
 {   // Start is called once before the first execution of Update after the MonoBehaviour is created
 
    [SerializeField] float velocidadAlAtacar = 10;
    [SerializeField] float aceleracionAlAtacar = 10;
-   [SerializeField] int health = 100;
+   //[SerializeField] int health = 100;
    Renderer _renderer;
 
 
@@ -41,19 +41,20 @@ public class EnemigoRapido : moviminetoEnemigo, IDamageable
       transform.LookAt(player);
 
    }
-    
-    
-   public int Health
-    {
-        get { return health; }
-        set { health = Mathf.Max(0, value); }
-    }
-    public void TakeDamage(int amount)
-    {
-        Health -= amount;
-        if(health == 0)
-        {
-            //que pasa cuando muere
-        }
-    }
- }
+
+
+    /* public int Health
+      {
+          get { return health; }
+          set { health = Mathf.Max(0, value); }
+      }
+
+      public void TakeDamage(int amount)
+      {
+          Health -= amount;
+          if(health == 0)
+          {
+              //que pasa cuando muere
+          }
+      }*/
+}

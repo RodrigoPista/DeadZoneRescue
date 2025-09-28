@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : HealthSystem
 {
     [Header("Movement Settings")]
     public float walkSpeed = 5f;
