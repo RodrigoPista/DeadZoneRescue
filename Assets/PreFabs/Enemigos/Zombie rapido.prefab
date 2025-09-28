@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a721ec19af9cd3c46851f7f71fbc9bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6631719575562021437, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
   capaRutaEnemigo:
     serializedVersion: 2
     m_Bits: 128
@@ -296,3 +296,4 @@ MonoBehaviour:
   rangoAtaque: 8
   velocidadAlAtacar: 40
   aceleracionAlAtacar: 15
+  health: 100
