@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8805619320127026460}
   - component: {fileID: 3106903083587354494}
   - component: {fileID: 6691772153395493315}
-  - component: {fileID: 7807977279073776333}
+  - component: {fileID: 6224900284572897320}
+  - component: {fileID: 7322977680585267505}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -139,7 +140,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7807977279073776333
+--- !u!114 &6224900284572897320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,17 +149,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 8419296260634341894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9fea568ed84167bc028af665ac957, type: 3}
+  m_Script: {fileID: 11500000, guid: c55089dbf6a6de749a659b34c91b60df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 100
-  groundDrag: 5
-  jumbForce: 6
-  jumpCooldown: 0.25
-  playerHeight: 1.8
-  groundLayer:
+  walkSpeed: 2
+  runSpeed: 5
+  runAcceleration: 5
+  doubleTapTime: 0.3
+  jumpHeight: 2
+  gravity: -9.81
+  airControlMultiplier: 0
+  rotationSpeed: 360
+  aimKey: 324
+  aimWalkSpeed: 1
+--- !u!143 &7322977680585267505
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419296260634341894}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
-  radioSphereCheck: 0.3
-  groundCheckOffset: {x: 0, y: -1.1, z: 0}
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5000001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
