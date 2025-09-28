@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 25f;
     public float lifeTime = 5f;
+    public float speed = 20f;
+
+    Rigidbody rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
+        // Empuja la bala hacia adelante en el momento de instanciarla
+        rb.linearVelocity = transform.forward * speed;
+
+        // Destruir despu�s de un tiempo para no dejar basura
         Destroy(gameObject, lifeTime);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        // Check if hit something with Health component
-        Health targetHealth = collision.gameObject.GetComponent<Health>();
-        if (targetHealth != null)
-        {
-            targetHealth.TakeDamage(damage);
-        }
-
-        // Destroy bullet on impact
-        Destroy(gameObject);
     }
 }

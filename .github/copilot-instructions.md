@@ -2,7 +2,7 @@
 - Project name: DeadZoneRescue
 - Unity version: Unity 6000.0.56f1
 - Active game object:
-  - Name: Player
-  - Tag: Player
-  - Layer: jugador
+  - Name: Bullet
+  - Tag: Untagged
+  - Layer: bulletPlayer
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

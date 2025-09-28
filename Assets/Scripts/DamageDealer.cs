@@ -4,7 +4,7 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField] int damage = 1;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<IDamageable>(out var target))
         {
