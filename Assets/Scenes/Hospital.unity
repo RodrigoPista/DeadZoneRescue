@@ -10793,6 +10793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1703778286}
+  - component: {fileID: 1703778287}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: SpawnPoint
@@ -10815,6 +10816,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703778287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703778285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8299210560a3efc49b99973fce3cfef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1716515360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1661924250575566428, guid: 58ae69f0a93dc4c76aa33c068fbc8e80, type: 3}
@@ -10875,6 +10888,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4707957021899339491, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798125170812443978, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_Name
+      value: Zombie rapido 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8853921956045113741, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.109673
@@ -10914,22 +10943,6 @@ PrefabInstance:
     - target: {fileID: 8853921956045113741, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_Name
-      value: Zombie rapido 2 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5798125170812443978, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707957021899339491, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11441,6 +11454,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4707957021899339491, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5798125170812443978, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_Name
+      value: Zombie rapido 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8853921956045113741, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.639671
@@ -11480,22 +11509,6 @@ PrefabInstance:
     - target: {fileID: 8853921956045113741, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_Name
-      value: Zombie rapido 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082037927978576240, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5798125170812443978, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707957021899339491, guid: e88c57165c5d590468b5622e2bcd6c12, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

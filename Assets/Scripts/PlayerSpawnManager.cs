@@ -1,28 +1,50 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerSpawnManager : MonoBehaviour
 {
-    void OnEnable()
-    {
-        // Me suscribo al evento cuando este objeto está activo
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+    [SerializeField] string spawnTag = "SpawnPoint";
 
-    void OnDisable()
-    {
-        // Limpieza: me desuscribo para evitar problemas
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
+    void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
-    // Este método se llama automáticamente cada vez que entra una escena nueva
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject spawn = GameObject.FindWithTag("SpawnPoint");
-        if (spawn != null)
+        // esperar un frame para asegurar que todo esté activo en la nueva escena
+        StartCoroutine(PlaceNextFrame());
+    }
+
+    IEnumerator PlaceNextFrame()
+    {
+        yield return null; // 1 frame
+        var t = FindSpawnTransform();
+        if (t != null)
         {
-            transform.position = spawn.transform.position;
-            transform.rotation = spawn.transform.rotation; // opcional
+            transform.SetPositionAndRotation(t.position, t.rotation);
         }
+        else
+        {
+            Debug.LogWarning("[Spawn] No se encontró SpawnPoint en la escena.");
+        }
+    }
+
+    Transform FindSpawnTransform()
+    {
+        // 1) Activo por tag (rápido)
+        var byTag = GameObject.FindWithTag(spawnTag);
+        if (byTag) return byTag.transform;
+
+        // 2) Con componente, incluso inactivos
+        var byComp = Object.FindObjectsOfType<SpawnPoint>(true);
+        if (byComp != null && byComp.Length > 0) return byComp[0].transform;
+
+        // 3) Último recurso: recorrer transforms inactivos con ese tag
+        foreach (var tr in Resources.FindObjectsOfTypeAll<Transform>())
+        {
+            if (!tr.gameObject.scene.IsValid()) continue; // descarta assets/prefabs
+            if (tr.CompareTag(spawnTag)) return tr;
+        }
+        return null;
     }
 }
