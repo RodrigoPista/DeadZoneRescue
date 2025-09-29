@@ -2,7 +2,7 @@
 - Project name: DeadZoneRescue
 - Unity version: Unity 6000.0.56f1
 - Active game object:
-  - Name: Bullet
+  - Name: HealthBar
   - Tag: Untagged
-  - Layer: bulletPlayer
+  - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
