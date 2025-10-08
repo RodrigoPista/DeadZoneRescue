@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class CharacterMovement : HealthSystem
@@ -189,6 +190,15 @@ public class CharacterMovement : HealthSystem
                 Quaternion targetRotation = Quaternion.LookRotation(inputDir);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
+        }
+    }
+
+    protected override void Die()
+    {
+        // Si la vida llega a 0
+        if (IsDead)
+        {
+            SceneManager.LoadScene("Derrota"); // poné el nombre exacto de la escena
         }
     }
 }
