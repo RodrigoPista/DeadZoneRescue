@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: eb9ffa292460a6a44b930d9b8f4ca78c
   - enabled: 1
+    path: Assets/Scenes/Ciudad.unity
+    guid: ee1a0eeeea4aab040acfc8eb594388b9
+  - enabled: 1
+    path: Assets/Scenes/Granja.unity
+    guid: 5118160a833a8bd41ac26750f62fcecf
+  - enabled: 0
     path: Assets/Arian/Prototipo/Granja/Granja.unity
     guid: 2397801398d48b94886e3f949989a490
-  - enabled: 1
+  - enabled: 0
     path: Assets/Arian/Prototipo/Ciudad/City.unity
     guid: 7db298ac968489a409f7af2cbb45341e
   - enabled: 1

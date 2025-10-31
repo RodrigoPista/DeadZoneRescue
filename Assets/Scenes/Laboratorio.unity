@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f585e12405bc7944bb74991913f479aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Arian/Prototipo/Ciudad/City
+  sceneToLoad: Ciudad
 --- !u!4 &837573743
 Transform:
   m_ObjectHideFlags: 0
