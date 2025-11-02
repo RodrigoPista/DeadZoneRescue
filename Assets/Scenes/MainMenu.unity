@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43246237f40771d489bf2698148e56e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScene: Arian/Prototipo/Granja/Granja
+  startScene: {fileID: 102900000, guid: 2397801398d48b94886e3f949989a490, type: 3}
 --- !u!1 &2047276225
 GameObject:
   m_ObjectHideFlags: 0
