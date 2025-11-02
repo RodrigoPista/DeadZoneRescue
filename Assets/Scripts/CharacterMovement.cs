@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
@@ -38,14 +39,26 @@ public class CharacterMovement : HealthSystem
 
     public bool IsAiming => isAiming; // expose for camera
 
+    private Animator animator;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         isGrounded = controller.isGrounded;
+        if(isGrounded == true)
+        {
+            animator.SetTrigger("jump to idle");
+            animator.SetBool("aire", false);
+        }
+        else
+        {
+            animator.SetBool("aire", true);
+        }
 
         // Aiming toggle
         isAiming = Input.GetKey(aimKey);
@@ -96,6 +109,7 @@ public class CharacterMovement : HealthSystem
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             verticalVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animator.SetTrigger("idle to jump");
         }
     }
 
@@ -130,6 +144,7 @@ public class CharacterMovement : HealthSystem
         if (isGrounded && verticalVelocity.y < 0)
         {
             verticalVelocity.y = -2f;
+            
         }
 
         verticalVelocity.y += gravity * Time.deltaTime;
@@ -140,28 +155,68 @@ public class CharacterMovement : HealthSystem
         if (inputDir != Vector3.zero)
         {
             float targetSpeed = walkSpeed;
-            if (isRunning) targetSpeed = runSpeed;
-            if (isAiming) targetSpeed = aimWalkSpeed;
+            if (isRunning) 
+            {
+                targetSpeed = runSpeed;
+               
+
+            }
+            if (isAiming) 
+            {
+                targetSpeed = aimWalkSpeed;
+                
+                
+                 
+            }
 
             Vector3 targetVelocity = inputDir * targetSpeed;
 
             if (isRunning)
             {
                 Vector3 minRunVelocity = inputDir * walkSpeed;
+
                 if (currentVelocity.magnitude < minRunVelocity.magnitude)
+                {
                     currentVelocity = minRunVelocity;
 
+                }
+
+
                 currentVelocity = Vector3.MoveTowards(currentVelocity, targetVelocity, runAcceleration * Time.deltaTime);
+
+
+
+
             }
             else
             {
                 currentVelocity = targetVelocity;
+                animator.SetBool("correr", true);
+                animator.SetBool("caminar", false);
+
+                Console.WriteLine("corriendo");
+            } if(Input.GetKey(KeyCode.Mouse1))
+            {
+                animator.SetBool("caminar", true);
+                animator.SetBool("correr", false);
+                 Console.WriteLine("caminando");
             }
+            
         }
         else
         {
             if (isGrounded)
-                currentVelocity = Vector3.zero;
+            {
+                  currentVelocity = Vector3.zero;
+                animator.SetBool("correr", false);
+                  animator.SetBool("caminar", false);
+
+            }
+            else
+            {
+
+            }
+              
         }
 
         Vector3 totalVelocity = currentVelocity + verticalVelocity;
