@@ -1,15 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Reflection;
 
 public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
 {
     private enum State { NotStarted, NeedsItem, Completed }
     [SerializeField] private State state = State.NotStarted;
 
-    [Header("UI (opcionales; se autoconectan si están vacíos)")]
+    [Header("UI (autocableo opcional)")]
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private QuestTrackerUI questTracker;
+
+    [Header("Identidad / Prompt")]
+    [SerializeField] private string npcName = "Robert";
+    public string GetPrompt() => $"<b><color=#FFD700>{npcName}</color></b>\nPresiona [E] para hablar";
+
+    [Header("Misión (configurable por NPC)")]
+    [SerializeField] private string questId = "quest.roberto.lata";           // ID único de misión
+    [SerializeField] private string requiredFlagName = "HasCannedFood";       // nombre EXACTO del bool en QuestFlags
+    [SerializeField] private bool consumeFlagOnComplete = true;
 
     [Header("Textos")]
     [TextArea]
@@ -24,31 +34,25 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     [SerializeField]
     private string completedText =
         "¡Gracias! Me salvaste. Te debo una.";
-    
-    
-    //[SerializeField] private string talkPrompt = "Hablar";
-    [SerializeField] private string npcName = "Robert";
+    [TextArea]
+    [SerializeField]
+    private string repeatedText =
+        "¡Gracias! Ya me ayudaste.";
 
-    [Header("Quest Tracker")]
+    [Header("Tracker (texto visible)")]
     [SerializeField] private string questTitle = "Misión de Roberto";
     [SerializeField] private string questDesc = "Consigue la lata de comida en el mercado";
     [SerializeField] private int questTotal = 1;
 
-    public string GetPrompt() =>
-    $"<b><color=#FFD700>{npcName}</color></b>\nPresiona [E] para hablar";
-
+    // ---------------- Lifecycle / Autowire ----------------
     void OnEnable()
     {
-        // Autocableo inicial y en carga de escena
         TryAutoWireUI();
         SceneManager.sceneLoaded += OnSceneLoaded;
         StartCoroutine(LateWireNextFrame());
     }
 
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
     void OnSceneLoaded(Scene s, LoadSceneMode m)
     {
@@ -58,69 +62,52 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
 
     IEnumerator LateWireNextFrame()
     {
-        yield return null; // 1 frame por si la UI aparece tarde
+        yield return null;
         TryAutoWireUI();
     }
 
     void TryAutoWireUI()
     {
-        // 1) Si hay manager global, usarlo
-        //if (UIRootManager.Instance)
-        //{
-           // if (!dialogueUI) dialogueUI = UIRootManager.Instance.dialogueUI;
-           // if (!questTracker) questTracker = UIRootManager.Instance.questTracker;
-       // }
-
-        // 2) Buscar en escena como fallback
         if (!dialogueUI) dialogueUI = FindObjectOfType<DialogueUI>(true);
         if (!questTracker) questTracker = FindObjectOfType<QuestTrackerUI>(true);
     }
 
-    // Helper: obtener SIEMPRE la instancia viva del tracker
-    QuestTrackerUI GetTracker()
-    {
-        // si la referencia serializada sigue viva, usarla
-        if (questTracker && questTracker.isActiveAndEnabled) return questTracker;
-
-        // probar manager global
-        //if (UIRootManager.Instance && UIRootManager.Instance.questTracker)
-            //return UIRootManager.Instance.questTracker;
-
-        // buscar en escena
-        return FindObjectOfType<QuestTrackerUI>(true);
-    }
-
-    // Helper idem para DialogueUI (opcional, por consistencia)
     DialogueUI GetDialogue()
     {
         if (dialogueUI && dialogueUI.isActiveAndEnabled) return dialogueUI;
-        //if (UIRootManager.Instance && UIRootManager.Instance.dialogueUI)
-            //return UIRootManager.Instance.dialogueUI;
         return FindObjectOfType<DialogueUI>(true);
     }
 
+    QuestTrackerUI GetTracker()
+    {
+        if (questTracker && questTracker.isActiveAndEnabled) return questTracker;
+        return FindObjectOfType<QuestTrackerUI>(true);
+    }
+
+    // ---------------- Interacción ----------------
     public void Interact(GameObject interactor)
     {
-        var dlg = GetDialogue();         // UI de diálogo viva
-        var trk = GetTracker();          // UI de tracker viva
+        var dlg = GetDialogue();
+        var trk = GetTracker();
 
         switch (state)
         {
             case State.NotStarted:
                 state = State.NeedsItem;
                 dlg?.Show(startText);
-                trk?.ShowQuest(questTitle, questDesc, 0, questTotal);  // 0/1
+                // Usar SIEMPRE API con ID para no pisar otras misiones:
+                trk?.AddOrUpdateQuest(questId, questTitle, questDesc, 0, questTotal);
                 break;
 
             case State.NeedsItem:
-                if (QuestFlags.HasCannedFood)
+                if (CheckFlag(requiredFlagName))
                 {
-                    QuestFlags.HasCannedFood = false;
-                    QuestFlags.MissionCompleted = true;
+                    if (consumeFlagOnComplete) ClearFlag(requiredFlagName);
                     state = State.Completed;
 
                     dlg?.Show(completedText);
-                    trk?.Complete("Completada");                        // 1/1 ✓ y oculta
+                    // Completar SOLO esta misión:
+                    trk?.CompleteById(questId, "Completada");
                 }
                 else
                 {
@@ -129,18 +116,25 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
                 break;
 
             case State.Completed:
-                dlg?.Show("Ya comí, ¡gracias de nuevo!");
+                dlg?.Show(repeatedText);
                 break;
         }
     }
 
-    void Reset()
+    // ---------------- Flags (via QuestFlags) ----------------
+    static bool CheckFlag(string flagName)
     {
-        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        var f = typeof(QuestFlags).GetField(flagName, BindingFlags.Public | BindingFlags.Static);
+        return f != null && f.FieldType == typeof(bool) && (bool)f.GetValue(null);
     }
 
-    public void ForceCompleted()
+    static void ClearFlag(string flagName)
     {
-        state = State.Completed;
+        var f = typeof(QuestFlags).GetField(flagName, BindingFlags.Public | BindingFlags.Static);
+        if (f != null && f.FieldType == typeof(bool)) f.SetValue(null, false);
     }
+
+    // ---------------- Util ----------------
+    void Reset() => gameObject.layer = LayerMask.NameToLayer("Interactable");
+    public void ForceCompleted() => state = State.Completed;
 }
