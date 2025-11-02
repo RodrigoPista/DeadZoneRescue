@@ -3,20 +3,20 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ItemPickupFlag : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string prompt = "Agarrar lata de comida [E]";
+    [SerializeField] private string objectName = "Lata de comida";
+    //[SerializeField] private string prompt = $"<b><color=#FFD700>{objectName}</color></b>\nPresiona [E] para agarrar";
 
-    public string GetPrompt() => prompt;
+    public string GetPrompt() => $"<b><color=#FFD700>{objectName}</color></b>\nPresiona [E] para agarrar";
 
     public void Interact(GameObject interactor)
     {
-        // Seteamos flag de "ya tengo la lata"
         QuestFlags.HasCannedFood = true;
 
-        // (Opcional) Persistencia:
-        // PlayerPrefs.SetInt("CANNED_FOOD_PICKED", 1);
-        // PlayerPrefs.Save();
+        // Actualizar tracker a 1/1 si existe
+        var tracker = FindObjectOfType<QuestTrackerUI>(true);
+        tracker?.SetProgress(1);
 
-        // TODO: SFX/VFX de pickup
+        // TODO: SFX/VFX
         Destroy(gameObject);
     }
 

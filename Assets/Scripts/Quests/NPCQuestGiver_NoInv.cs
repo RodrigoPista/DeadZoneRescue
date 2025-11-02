@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -7,33 +7,41 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     private enum State { NotStarted, NeedsItem, Completed }
     [SerializeField] private State state = State.NotStarted;
 
-    [Header("UI (autocableable)")]
+    [Header("UI (opcionales; se autoconectan si estÃ¡n vacÃ­os)")]
     [SerializeField] private DialogueUI dialogueUI;
+    [SerializeField] private QuestTrackerUI questTracker;
 
     [Header("Textos")]
     [TextArea]
     [SerializeField]
     private string startText =
-        "Estoy muerto de hambre... ¿podés ir al mercado y traerme una lata?";
+        "Estoy muerto de hambre... Â¿podÃ©s ir al mercado y traerme una lata?";
     [TextArea]
     [SerializeField]
     private string waitingText =
-        "¿La conseguiste? Traeme una lata de comida, por favor.";
+        "Â¿La conseguiste? Traeme una lata de comida, por favor.";
     [TextArea]
     [SerializeField]
     private string completedText =
-        "¡Gracias! Me salvaste. Te debo una.";
-    [SerializeField] private string talkPrompt = "Hablar [E]";
+        "Â¡Gracias! Me salvaste. Te debo una.";
+    
+    
+    //[SerializeField] private string talkPrompt = "Hablar";
+    [SerializeField] private string npcName = "Robert";
 
-    public string GetPrompt() => talkPrompt;
+    [Header("Quest Tracker")]
+    [SerializeField] private string questTitle = "MisiÃ³n de Roberto";
+    [SerializeField] private string questDesc = "Consigue la lata de comida en el mercado";
+    [SerializeField] private int questTotal = 1;
+
+    public string GetPrompt() =>
+    $"<b><color=#FFD700>{npcName}</color></b>\nPresiona [E] para hablar";
 
     void OnEnable()
     {
-        // Re-conectar al entrar a escena
+        // Autocableo inicial y en carga de escena
         TryAutoWireUI();
-        // Re-conectar cuando cualquier escena termina de cargar
         SceneManager.sceneLoaded += OnSceneLoaded;
-        // Por si la UI aparece 1 frame tarde (instanciada por script):
         StartCoroutine(LateWireNextFrame());
     }
 
@@ -45,33 +53,63 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     void OnSceneLoaded(Scene s, LoadSceneMode m)
     {
         TryAutoWireUI();
-        // Y un late wire por si la UI se activa después del load
         StartCoroutine(LateWireNextFrame());
     }
 
     IEnumerator LateWireNextFrame()
     {
-        yield return null;          // esperar 1 frame
-        TryAutoWireUI();            // intentar nuevamente
+        yield return null; // 1 frame por si la UI aparece tarde
+        TryAutoWireUI();
     }
 
     void TryAutoWireUI()
     {
-        //  Si ya está asignada y activa, listo
-        if (dialogueUI && dialogueUI.isActiveAndEnabled) return;
+        // 1) Si hay manager global, usarlo
+        //if (UIRootManager.Instance)
+        //{
+           // if (!dialogueUI) dialogueUI = UIRootManager.Instance.dialogueUI;
+           // if (!questTracker) questTracker = UIRootManager.Instance.questTracker;
+       // }
 
-        //  Búsqueda en la escena (incluye desactivados)
-        if (!dialogueUI)
-            dialogueUI = FindObjectOfType<DialogueUI>(true);
+        // 2) Buscar en escena como fallback
+        if (!dialogueUI) dialogueUI = FindObjectOfType<DialogueUI>(true);
+        if (!questTracker) questTracker = FindObjectOfType<QuestTrackerUI>(true);
+    }
+
+    // Helper: obtener SIEMPRE la instancia viva del tracker
+    QuestTrackerUI GetTracker()
+    {
+        // si la referencia serializada sigue viva, usarla
+        if (questTracker && questTracker.isActiveAndEnabled) return questTracker;
+
+        // probar manager global
+        //if (UIRootManager.Instance && UIRootManager.Instance.questTracker)
+            //return UIRootManager.Instance.questTracker;
+
+        // buscar en escena
+        return FindObjectOfType<QuestTrackerUI>(true);
+    }
+
+    // Helper idem para DialogueUI (opcional, por consistencia)
+    DialogueUI GetDialogue()
+    {
+        if (dialogueUI && dialogueUI.isActiveAndEnabled) return dialogueUI;
+        //if (UIRootManager.Instance && UIRootManager.Instance.dialogueUI)
+            //return UIRootManager.Instance.dialogueUI;
+        return FindObjectOfType<DialogueUI>(true);
     }
 
     public void Interact(GameObject interactor)
     {
+        var dlg = GetDialogue();         // UI de diÃ¡logo viva
+        var trk = GetTracker();          // UI de tracker viva
+
         switch (state)
         {
             case State.NotStarted:
                 state = State.NeedsItem;
-                ShowDialogue(startText);
+                dlg?.Show(startText);
+                trk?.ShowQuest(questTitle, questDesc, 0, questTotal);  // 0/1
                 break;
 
             case State.NeedsItem:
@@ -80,25 +118,29 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
                     QuestFlags.HasCannedFood = false;
                     QuestFlags.MissionCompleted = true;
                     state = State.Completed;
-                    ShowDialogue(completedText);
+
+                    dlg?.Show(completedText);
+                    trk?.Complete("Completada");                        // 1/1 âœ“ y oculta
                 }
                 else
                 {
-                    ShowDialogue(waitingText);
+                    dlg?.Show(waitingText);
                 }
                 break;
 
             case State.Completed:
-                ShowDialogue("Ya comí, ¡gracias de nuevo!");
+                dlg?.Show("Ya comÃ­, Â¡gracias de nuevo!");
                 break;
         }
     }
 
-    private void ShowDialogue(string text)
+    void Reset()
     {
-        if (dialogueUI) dialogueUI.Show(text);
-        else Debug.LogWarning($"[NPC] DialogueUI no encontrada en escena. Texto: {text}");
+        gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
-    public void ForceCompleted() => state = State.Completed;
+    public void ForceCompleted()
+    {
+        state = State.Completed;
+    }
 }
