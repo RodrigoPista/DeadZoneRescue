@@ -42289,6 +42289,34 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: footstepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 83a27e935d47c404ca477d64d9b9716d, type: 3}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: baseStepInterval
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: footstepSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d63ec325f494b4a40946e917b79a521b, type: 3}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: 'footstepSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 586592829967c4f1e957fa24fe505227, type: 3}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: 'footstepSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 52938d10cbed54a949c22b0732539bf1, type: 3}
+    - target: {fileID: 7110308990221239239, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
+      propertyPath: 'footstepSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 83a27e935d47c404ca477d64d9b9716d, type: 3}
     - target: {fileID: 7317807231467699995, guid: 845586d7140cd1b4cb290be2cf7a1bf2, type: 3}
       propertyPath: weaponSpawnPoint
       value: 

@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(AudioSource))]
 public class CharacterMovement : HealthSystem
 {
     [Header("Movement Settings")]
@@ -19,10 +21,17 @@ public class CharacterMovement : HealthSystem
     public float rotationSpeed = 720f;
 
     [Header("Aiming")]
-    public KeyCode aimKey = KeyCode.Mouse1; // right mouse button
-    public float aimWalkSpeed = 2f;         // slower walk while aiming
+    public KeyCode aimKey = KeyCode.Mouse1;
+    public float aimWalkSpeed = 2f;
+
+    [Header("Footstep Settings")]
+    public AudioClip[] footstepSounds; // 🎵 varios sonidos de pasos
+    public float baseStepInterval = 0.5f; // tiempo entre pasos
+    private float stepTimer;
+    private int lastStepIndex = -1;
 
     private CharacterController controller;
+    private AudioSource audioSource;
 
     private Vector3 inputDir;
     private Vector3 currentVelocity;
@@ -30,30 +39,34 @@ public class CharacterMovement : HealthSystem
 
     private bool isRunning = false;
     private bool isGrounded;
+    private bool isAiming;
 
     private KeyCode lastKey;
     private float lastTapTime;
 
-    private bool isAiming;
-
-    public bool IsAiming => isAiming; // expose for camera
+    public bool IsAiming => isAiming;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        audioSource = GetComponent<AudioSource>();
+
+        // Configuración del AudioSource
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 1f; // 3D sound si es un juego en 3D
     }
 
     void Update()
     {
         isGrounded = controller.isGrounded;
-
-        // Aiming toggle
         isAiming = Input.GetKey(aimKey);
 
         HandleInput();
         ApplyGravityAndJump();
         MoveCharacter();
         RotateCharacter();
+        HandleFootsteps(); // 👣 sonidos de pasos
     }
 
     void HandleInput()
@@ -80,7 +93,6 @@ public class CharacterMovement : HealthSystem
             inputDir = isGrounded ? moveInput : Vector3.Lerp(inputDir, moveInput, airControlMultiplier);
         }
 
-        // Only detect double taps if not aiming
         if (!isAiming)
         {
             DetectDoubleTap(KeyCode.W);
@@ -90,7 +102,7 @@ public class CharacterMovement : HealthSystem
         }
         else
         {
-            isRunning = false; // cannot run while aiming
+            isRunning = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -109,7 +121,6 @@ public class CharacterMovement : HealthSystem
             }
             else
             {
-                // only cancel run if no key pressed at all
                 isRunning = false;
             }
 
@@ -119,8 +130,8 @@ public class CharacterMovement : HealthSystem
 
         if (Input.GetKeyUp(key))
         {
-            // stop running only if all keys released
-            if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+            if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) &&
+                !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
                 isRunning = false;
         }
     }
@@ -172,7 +183,6 @@ public class CharacterMovement : HealthSystem
     {
         if (isAiming)
         {
-            // While aiming, rotate to face camera direction
             Vector3 camForward = Camera.main.transform.forward;
             camForward.y = 0f;
             camForward.Normalize();
@@ -193,13 +203,45 @@ public class CharacterMovement : HealthSystem
         }
     }
 
+    void HandleFootsteps()
+    {
+        // 👣 Solo reproducir si está en el suelo y se mueve
+        if (isGrounded && inputDir.magnitude > 0.1f)
+        {
+            float speedMultiplier = isRunning ? 0.7f : 1f;
+            float interval = baseStepInterval * speedMultiplier;
+            stepTimer += Time.deltaTime;
+
+            if (stepTimer >= interval && footstepSounds.Length > 0)
+            {
+                // 🔀 elegir sonido al azar sin repetir el último
+                int index;
+                do
+                {
+                    index = Random.Range(0, footstepSounds.Length);
+                } while (index == lastStepIndex && footstepSounds.Length > 1);
+
+                lastStepIndex = index;
+
+                AudioClip step = footstepSounds[index];
+                audioSource.pitch = Random.Range(0.95f, 1.05f);
+                audioSource.PlayOneShot(step);
+                audioSource.pitch = 1f;
+
+                stepTimer = 0f;
+            }
+        }
+        else
+        {
+            stepTimer = 0f; // 🔇 si no se mueve o está saltando
+        }
+    }
+
     protected override void Die()
     {
-        // Si la vida llega a 0
         if (IsDead)
         {
-            SceneManager.LoadScene("Derrota"); // poné el nombre exacto de la escena
+            SceneManager.LoadScene("Derrota");
         }
     }
 }
-
