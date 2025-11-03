@@ -3,9 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    [Header("Scene Settings")]
     [SerializeField] private string startScene = "SampleScene";
 
-    // Llamado por el botÛn START
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip startButtonSound;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.loop = false;
+            audioSource.spatialBlend = 0f; // 2D UI sound
+        }
+    }
+
+    // Llamado por el bot√≥n START
     public void StartGame()
     {
         if (string.IsNullOrEmpty(startScene))
@@ -13,26 +30,30 @@ public class MainMenuUI : MonoBehaviour
             Debug.LogError("Scene name to load is empty.");
             return;
         }
-        // 1) Resetear progreso persistente de quests
-        QuestStateStore.ClearAll();
 
-        // 2) Resetear flags de Ìtems / misiones en memoria
-        QuestFlags.ResetAll();
+        // üîä reproducir sonido antes de cargar la escena
+        if (startButtonSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(startButtonSound);
+        }
 
-        // 3) Limpiar tracker UI (si est· presente en el men˙)
-        var tracker = FindObjectOfType<QuestTrackerUI>(true);
-        tracker?.ClearAll();
+        // üïê esperar un poco antes de cargar la escena (para que se escuche el sonido completo)
+        float delay = startButtonSound ? startButtonSound.length : 0f;
+        Invoke(nameof(LoadStartScene), delay);
+    }
+
+    private void LoadStartScene()
+    {
         SceneManager.LoadScene(startScene);
     }
 
-    // Llamado por el botÛn OPTIONS (por ahora placeholder)
+    // Llamado por el bot√≥n OPTIONS
     public void OpenOptions()
     {
         Debug.Log("Options pending (placeholder).");
-        // AquÌ luego abrÌs un Panel de opciones, o carg·s otra escena, etc.
     }
 
-    // Llamado por el botÛn EXIT (funciona solo en build)
+    // Llamado por el bot√≥n EXIT
     public void QuitGame()
     {
         Debug.Log("Quit requested.");

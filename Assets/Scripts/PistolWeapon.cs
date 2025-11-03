@@ -17,9 +17,10 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
     public float fireRate = 0.2f;
     public AudioClip fireSound;
     public AudioClip reloadSound;
+    public AudioClip emptySound; // 🔸 agregado
 
     [Header("Aiming")]
-    public Camera playerCamera; // assign your player camera here
+    public Camera playerCamera;
     public float maxAimDistance = 200f;
 
     private PlayerWeaponController controller;
@@ -36,6 +37,11 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
 
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        // 🔹 asegurate que no haya loop ni play on awake
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 1f; // 3D si el juego es en 3D
 
         currentAmmo = Mathf.Min(magazineSize, totalAmmo + magazineSize);
     }
@@ -59,6 +65,12 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
             else if (totalAmmo > 0)
             {
                 controller.StartCoroutine(Reload());
+            }
+            else
+            {
+                // 🔸 sin balas: reproducimos el sonido de "click"
+                if (emptySound && audioSource)
+                    audioSource.PlayOneShot(emptySound);
             }
         }
     }
@@ -97,8 +109,17 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
             rb.linearVelocity = direction * bulletSpeed;
         }
 
-        if (fireSound) audioSource.PlayOneShot(fireSound);
+        // 🔸 reproducir sonido de disparo
+        if (fireSound && audioSource)
+{
+    float randomPitch = Random.Range(0.95f, 1.05f); // leve variación del 5%
+    audioSource.pitch = randomPitch;
+    audioSource.PlayOneShot(fireSound);
+    audioSource.pitch = 1f; // restaurar pitch a normal
+}
 
+
+        // 🔸 recarga automática si se vacía el cargador
         if (currentAmmo <= 0 && totalAmmo > 0)
         {
             controller.StartCoroutine(Reload());
@@ -109,14 +130,18 @@ public class PistolWeapon : MonoBehaviour, IWeaponStrategy
     {
         if (isReloading) yield break;
         isReloading = true;
-        if (reloadSound) audioSource.PlayOneShot(reloadSound);
+
+        // 🔸 reproducir sonido de recarga
+        if (reloadSound && audioSource)
+            audioSource.PlayOneShot(reloadSound);
+
         yield return new WaitForSeconds(reloadTime);
+
         int ammoNeeded = magazineSize - currentAmmo;
         int ammoToLoad = Mathf.Min(ammoNeeded, totalAmmo);
         currentAmmo += ammoToLoad;
         totalAmmo -= ammoToLoad;
         isReloading = false;
-
     }
 
     public int CurrentAmmo => currentAmmo;
