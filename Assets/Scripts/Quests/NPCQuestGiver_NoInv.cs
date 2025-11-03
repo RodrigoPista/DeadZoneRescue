@@ -17,8 +17,8 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     public string GetPrompt() => $"<b><color=#FFD700>{npcName}</color></b>\nPresiona [E] para hablar";
 
     [Header("Misión (configurable por NPC)")]
-    [SerializeField] private string questId = "quest.roberto.lata";           // ID único de misión
-    [SerializeField] private string requiredFlagName = "HasCannedFood";       // nombre EXACTO del bool en QuestFlags
+    [SerializeField] private string questId = "quest.roberto.lata";
+    [SerializeField] private string requiredFlagName = "HasCannedFood";
     [SerializeField] private bool consumeFlagOnComplete = true;
 
     [Header("Textos")]
@@ -44,10 +44,13 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     [SerializeField] private string questDesc = "Consigue la lata de comida en el mercado";
     [SerializeField] private int questTotal = 1;
 
-    // ---------------- Lifecycle / Autowire ----------------
+    // -------- Lifecycle / Autowire --------
     void OnEnable()
     {
         TryAutoWireUI();
+        // Restaurar estado persistido al entrar a la escena
+        RestoreStateFromStore();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         StartCoroutine(LateWireNextFrame());
     }
@@ -57,6 +60,8 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     void OnSceneLoaded(Scene s, LoadSceneMode m)
     {
         TryAutoWireUI();
+        // Tras carga de escena, aseguramos que el estado queda aplicado
+        RestoreStateFromStore();
         StartCoroutine(LateWireNextFrame());
     }
 
@@ -84,7 +89,35 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
         return FindObjectOfType<QuestTrackerUI>(true);
     }
 
-    // ---------------- Interacción ----------------
+    // -------- Persistencia --------
+    void RestoreStateFromStore()
+    {
+        var persisted = QuestStateStore.Get(questId);
+        switch (persisted)
+        {
+            case QuestStage.Completed:
+                state = State.Completed; // queda bloqueado en completada
+                break;
+
+            case QuestStage.NeedsItem:
+                state = State.NeedsItem; // ya fue asignada previamente
+                break;
+
+            default:
+                state = State.NotStarted;
+                break;
+        }
+    }
+
+    void SaveState(State s)
+    {
+        var stage = s == State.Completed ? QuestStage.Completed
+                  : s == State.NeedsItem ? QuestStage.NeedsItem
+                  : QuestStage.NotStarted;
+        QuestStateStore.Set(questId, stage);
+    }
+
+    // -------- Interacción --------
     public void Interact(GameObject interactor)
     {
         var dlg = GetDialogue();
@@ -94,8 +127,8 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
         {
             case State.NotStarted:
                 state = State.NeedsItem;
+                SaveState(state); // ← persistir “waiting” para no volver a NotStarted
                 dlg?.Show(startText);
-                // Usar SIEMPRE API con ID para no pisar otras misiones:
                 trk?.AddOrUpdateQuest(questId, questTitle, questDesc, 0, questTotal);
                 break;
 
@@ -104,9 +137,9 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
                 {
                     if (consumeFlagOnComplete) ClearFlag(requiredFlagName);
                     state = State.Completed;
+                    SaveState(state); // ← persistir “completed”
 
                     dlg?.Show(completedText);
-                    // Completar SOLO esta misión:
                     trk?.CompleteById(questId, "Completada");
                 }
                 else
@@ -116,12 +149,13 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
                 break;
 
             case State.Completed:
+                // No retrocede nunca
                 dlg?.Show(repeatedText);
                 break;
         }
     }
 
-    // ---------------- Flags (via QuestFlags) ----------------
+    // -------- Flags (QuestFlags) --------
     static bool CheckFlag(string flagName)
     {
         var f = typeof(QuestFlags).GetField(flagName, BindingFlags.Public | BindingFlags.Static);
@@ -134,7 +168,7 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
         if (f != null && f.FieldType == typeof(bool)) f.SetValue(null, false);
     }
 
-    // ---------------- Util ----------------
+    // -------- Util --------
     void Reset() => gameObject.layer = LayerMask.NameToLayer("Interactable");
-    public void ForceCompleted() => state = State.Completed;
+    public void ForceCompleted() { state = State.Completed; SaveState(state); }
 }

@@ -31,8 +31,9 @@ public class QuestTrackerUI : MonoBehaviour
         public string Description;
         public int Current;
         public int Total;
-        public bool Completed;
-        public int Version;      // contador incremental para orden de aparición
+        public bool Completed;       // Solo el NPC la pone en true (CompleteById)
+        public int Version;          // contador incremental para orden de aparición
+        public string CompletedNote; // ej: "Completada"
     }
 
     private readonly Dictionary<string, QuestEntry> _entries = new();
@@ -64,19 +65,27 @@ public class QuestTrackerUI : MonoBehaviour
                 Description = description,
                 Current = Mathf.Max(0, start),
                 Total = Mathf.Max(1, goal),
-                Completed = false,
-                Version = ++_versionCounter
+                Completed = false,       // al asignar, siempre arranca incompleta
+                Version = ++_versionCounter,
+                CompletedNote = null
             };
             _entries[questId] = e;
         }
         else
         {
+            // Actualizamos texto y metas, pero NO cambiamos Completed automáticamente
             e.Title = title;
             e.Description = description;
             e.Total = Mathf.Max(1, goal);
-            e.Current = Mathf.Clamp(start, 0, e.Total);
-            e.Completed = e.Current >= e.Total;
-            e.Version = ++_versionCounter; // lo consideramos “reciente”
+
+            // Si ya estaba completada, no tocamos Current; si no, podés querer forzar el start
+            if (!e.Completed)
+            {
+                e.Current = Mathf.Clamp(start, 0, e.Total);
+                e.CompletedNote = null; // si vuelve a estado activo, limpiamos nota
+            }
+
+            e.Version = ++_versionCounter; // “reciente”
         }
 
         _lastQuestId = questId;
@@ -86,21 +95,35 @@ public class QuestTrackerUI : MonoBehaviour
     public void SetProgressById(string questId, int currentValue)
     {
         if (!_entries.TryGetValue(questId, out var e)) return;
+
+        // Si ya está completada, ignoramos updates de progreso
+        if (e.Completed)
+        {
+            RebuildListAndShow();
+            return;
+        }
+
         e.Current = Mathf.Clamp(currentValue, 0, e.Total);
-        e.Completed = e.Current >= e.Total;
+        // IMPORTANTE: NO autocompletar acá (aunque sea 1/1). El NPC decide cuándo completar.
+        // e.Completed permanece como estaba (false).
         e.Version = ++_versionCounter;
+
+        // Por si venía una nota por error, la limpiamos mientras no esté completada:
+        e.CompletedNote = null;
+
         RebuildListAndShow();
     }
 
     public void CompleteById(string questId, string completedNote = "Completada")
     {
         if (!_entries.TryGetValue(questId, out var e)) return;
+
+        // Al completar desde el NPC, reflejamos 1/1 y estado final
         e.Current = e.Total;
         e.Completed = true;
-        e.Description = string.IsNullOrEmpty(completedNote)
-            ? e.Description
-            : $"{e.Description} ({completedNote})";
+        e.CompletedNote = completedNote;
         e.Version = ++_versionCounter;
+
         RebuildListAndShow();
     }
 
@@ -144,8 +167,8 @@ public class QuestTrackerUI : MonoBehaviour
         {
             descText.enableWordWrapping = true;
 
-            // Orden correcto con ThenBy (ya con System.Linq)
-            IEnumerable<QuestEntry> ordered = _entries.Values;
+            // Orden
+            IEnumerable<QuestEntry> ordered;
 
             if (sortIncompleteFirst)
             {
@@ -167,14 +190,26 @@ public class QuestTrackerUI : MonoBehaviour
 
             foreach (var e in ordered)
             {
-                string progress = e.Completed
-                    ? $"<color=#5CFF5C>({e.Current}/{e.Total})</color>"
-                    : $"<color=#CCCCCC>({e.Current}/{e.Total})</color>";
+                if (e.Completed)
+                {
+                    // Progreso + nota en verde (con ✓). Título y descripción tachados.
+                    string note = string.IsNullOrEmpty(e.CompletedNote) ? "Completada" : e.CompletedNote;
+                    string progress = $"<color=#5CFF5C>({e.Current}/{e.Total}<b>{note}</b>)</color>";
 
-                sb.AppendLine($"<b>• {e.Title}</b> {progress}");
+                    sb.AppendLine($"<s><b>• {e.Title}</b></s> {progress}");
 
-                if (!string.IsNullOrEmpty(e.Description))
-                    sb.AppendLine($"    {e.Description}");
+                    if (!string.IsNullOrEmpty(e.Description))
+                        sb.AppendLine($"    <s>{e.Description}</s>");
+                }
+                else
+                {
+                    // Incompleta: progreso gris, sin tachado
+                    string progress = $"<color=#CCCCCC>({e.Current}/{e.Total})</color>";
+                    sb.AppendLine($"<b>• {e.Title}</b> {progress}");
+
+                    if (!string.IsNullOrEmpty(e.Description))
+                        sb.AppendLine($"    {e.Description}");
+                }
 
                 sb.AppendLine();
             }
@@ -223,5 +258,15 @@ public class QuestTrackerUI : MonoBehaviour
                                    .ToArray())
                                   .Replace(' ', '_');
         return $"quest.{id}";
+    }
+
+    public void ClearAll()
+    {
+        _entries.Clear();
+        _versionCounter = 0;
+
+        if (descText) descText.text = "";
+        if (progressText) progressText.text = "";
+        HideNow();
     }
 }
