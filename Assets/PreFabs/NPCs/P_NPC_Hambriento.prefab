@@ -126,13 +126,17 @@ MonoBehaviour:
   state: 0
   dialogueUI: {fileID: 0}
   questTracker: {fileID: 0}
+  npcName: Roberto
+  questId: quest.roberto.lata
+  requiredFlagName: HasCannedFood
+  consumeFlagOnComplete: 1
   startText: "Hola Superviviente, estoy muerto de hambre... \xBFpod\xE9s ir al mercado
     y traerme una lata?"
   waitingText: "\xBFLa conseguiste? Traeme una lata de comida, por favor.\nSi ves
     a tu izquierda notaras un camino a la ciudad (TP Rojo).\nEncuentra la lata dentro
     del mercado"
   completedText: "\xA1Gracias! Me salvaste. Te debo una."
-  npcName: Roberto
-  questTitle: "Misi\xF3n de Roberto"
-  questDesc: Consigue la lata de comida en el mercado
+  repeatedText: "\xA1Gracias! Ya me ayudaste."
+  questTitle: El Hambre del Siglo - Roberto
+  questDesc: "Consigue la lata de comida en el mercado y entr\xE9gasela a Roberto"
   questTotal: 1

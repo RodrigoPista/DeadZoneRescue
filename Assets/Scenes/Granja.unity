@@ -19075,7 +19075,7 @@ PrefabInstance:
       objectReference: {fileID: 1143667241}
     - target: {fileID: 8245809262779757729, guid: 6e061ab8f31dc67458d6002cdacde4c5, type: 3}
       propertyPath: questTitle
-      value: Vendas para una momia - Carlos
+      value: Una Venda para una Momia - Carlos
       objectReference: {fileID: 0}
     - target: {fileID: 8245809262779757729, guid: 6e061ab8f31dc67458d6002cdacde4c5, type: 3}
       propertyPath: questTracker
@@ -19108,7 +19108,7 @@ PrefabInstance:
       objectReference: {fileID: 1143667241}
     - target: {fileID: 171343695626315752, guid: 50872755057cc4b41bbae619dcc74ee4, type: 3}
       propertyPath: questTitle
-      value: Comida para un amigo - Roberto
+      value: El Hambre del Siglo - Roberto
       objectReference: {fileID: 0}
     - target: {fileID: 171343695626315752, guid: 50872755057cc4b41bbae619dcc74ee4, type: 3}
       propertyPath: questTracker

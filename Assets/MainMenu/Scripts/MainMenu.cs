@@ -44,6 +44,16 @@ public class MainMenuUI : MonoBehaviour
 
     private void LoadStartScene()
     {
+        // 1) Resetear progreso persistente de quests
+        QuestStateStore.ClearAll();
+
+        // 2) Resetear flags de ítems / misiones en memoria
+        QuestFlags.ResetAll();
+
+        // 3) Limpiar tracker UI (si está presente en el menú)
+        var tracker = FindObjectOfType<QuestTrackerUI>(true);
+        tracker?.ClearAll();
+
         SceneManager.LoadScene(startScene);
     }
 

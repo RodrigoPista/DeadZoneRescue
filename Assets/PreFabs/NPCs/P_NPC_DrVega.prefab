@@ -127,8 +127,8 @@ MonoBehaviour:
   dialogueUI: {fileID: 0}
   questTracker: {fileID: 0}
   npcName: Dr. Vega
-  questId: quest.roberto.lata
-  requiredFlagName: HasCannedFood
+  questId: quest.vega.cura
+  requiredFlagName: HasCura
   consumeFlagOnComplete: 1
   startText: "Soy el Dr. Vega, necesitamos la cura del laboratorio para detener la
     infecci\xF3n. \xBFPodrias conseguirla?"
@@ -137,6 +137,6 @@ MonoBehaviour:
     Laboratorio."
   completedText: "Excelente, la cura est\xE1 a salvo. Has hecho un gran trabajo."
   repeatedText: "\xA1Gracias! Ya me ayudaste."
-  questTitle: "Misi\xF3n de Dr. Vega"
+  questTitle: Lo que no te mata te infecta - Dr. Vega
   questDesc: "Encuentra la cura en el laboratorio y entr\xE9gasela al Dr. Vega"
   questTotal: 1
