@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: fb36236789444fa4fa68f9409386c9cd
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67475
+  packageName: Low Poly Street Pack
+  packageVersion: 1.0
+  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/pavement_02.png
+  uploadId: 127808
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,10 +148,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 67475
-  packageName: Low Poly Street Pack
-  packageVersion: 1.0
-  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/pavement_02.png
-  uploadId: 127808

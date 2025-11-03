@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 3482d24f9e4f70741a9780133bcc144d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67475
+  packageName: Low Poly Street Pack
+  packageVersion: 1.0
+  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/grass.png
+  uploadId: 127808
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,10 +148,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 67475
-  packageName: Low Poly Street Pack
-  packageVersion: 1.0
-  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/grass.png
-  uploadId: 127808

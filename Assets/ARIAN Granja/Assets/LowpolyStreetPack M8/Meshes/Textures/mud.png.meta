@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: f25d78572808cbb4fbf0a3a24f1c3880
+AssetOrigin:
+  serializedVersion: 1
+  productId: 67475
+  packageName: Low Poly Street Pack
+  packageVersion: 1.0
+  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/mud.png
+  uploadId: 127808
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,10 +148,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 67475
-  packageName: Low Poly Street Pack
-  packageVersion: 1.0
-  assetPath: Assets/LowpolyStreetPack/Meshes/Textures/mud.png
-  uploadId: 127808
