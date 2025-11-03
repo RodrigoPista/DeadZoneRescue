@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +40,7 @@ public class CharacterMovement : HealthSystem
     public bool IsAiming => isAiming; // expose for camera
 
     private Animator animator;
+    
 
     void Start()
     {
@@ -193,12 +194,13 @@ public class CharacterMovement : HealthSystem
                 currentVelocity = targetVelocity;
                 animator.SetBool("correr", true);
                 animator.SetBool("caminar", false);
-
+                
                 Console.WriteLine("corriendo");
             } if(Input.GetKey(KeyCode.Mouse1))
             {
                 animator.SetBool("caminar", true);
                 animator.SetBool("correr", false);
+                transform.parent = null;
                  Console.WriteLine("caminando");
             }
             
