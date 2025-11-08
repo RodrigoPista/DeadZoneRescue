@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>RonMain</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.2.5;  Revision: 673;  Platform: Win32;  Configuration: Release Max9</authoring_tool>
+      <source_data>file:///E:/3TDS%20Torque%20Model%20Library/Props/BarbedWire%20Fences/FenceSeg_02-Final.max</source_data>
+    </contributor>
+    <created>2012-10-05T14:43:15</created>
+    <modified>2012-10-05T14:43:15</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="WoodPost01">
+      <profile_COMMON>
+        <newparam sid="_td_woodPost_01_1024_jpg-surface">
+          <surface type="2D">
+            <init_from>_td_woodPost_01_1024_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="_td_woodPost_01_1024_jpg-sampler">
+          <sampler2D>
+            <source>_td_woodPost_01_1024_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.5882353 0.5882353 0.5882353 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="_td_woodPost_01_1024_jpg-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0.9 0.9 0.9 1</color>
+            </specular>
+            <shininess>
+              <float>9.999999</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>1</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="BarbedWire">
+      <profile_COMMON>
+        <newparam sid="_td_BarbedWire_02_png-surface">
+          <surface type="2D">
+            <init_from>_td_BarbedWire_02_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="_td_BarbedWire_02_png-sampler">
+          <sampler2D>
+            <source>_td_BarbedWire_02_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.5882353 0.5882353 0.5882353 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="_td_BarbedWire_02_png-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0.9 0.9 0.9 1</color>
+            </specular>
+            <shininess>
+              <float>9.999999</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <texture texture="_td_BarbedWire_02_png-sampler" texcoord="CHANNEL1"/>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>1</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="ColorEffectR176G26B26">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>0.6901961 0.1019608 0.1019608 1</color>
+            </ambient>
+            <diffuse>
+              <color>0.6901961 0.1019608 0.1019608 1</color>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent>
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <apply_reflection_dimming>0</apply_reflection_dimming>
+            <dim_level>0</dim_level>
+            <falloff_type>0</falloff_type>
+            <index_of_refraction>1.5</index_of_refraction>
+            <opacity_type>0</opacity_type>
+            <reflection_level>3</reflection_level>
+            <wire_size>1</wire_size>
+            <wire_units>0</wire_units>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_lock>1</ambient_diffuse_lock>
+            <ambient_diffuse_texture_lock>1</ambient_diffuse_texture_lock>
+            <diffuse_specular_lock>0</diffuse_specular_lock>
+            <soften>0.1</soften>
+            <use_self_illum_color>0</use_self_illum_color>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="ColorEffectR176G26B26-material" name="ColorEffectR176G26B26-material">
+      <instance_effect url="#ColorEffectR176G26B26"/>
+    </material>
+    <material id="WoodPost01-material" name="WoodPost01">
+      <instance_effect url="#WoodPost01"/>
+    </material>
+    <material id="BarbedWire-material" name="BarbedWire">
+      <instance_effect url="#BarbedWire"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-FenceSegTwo256" name="FenceSegTwo256">
+      <mesh>
+        <source id="geom-FenceSegTwo256-positions">
+          <float_array id="geom-FenceSegTwo256-positions-array" count="372">0.6545119 0.03839728 -3.157487 0.3601337 0.4739715 -3.157487 0.2465065 0.6929147 -3.157487 -0.6298158 0.5126682 -3.157487 -0.7454884 -0.006945372 -3.157487 -0.3813853 -0.4772817 -3.157487 -0.04458942 -0.7070853 -3.157487 0.608564 -0.5159781 -3.157487 0.6680714 0.01613137 5 0.2479929 0.456504 5 0.1035633 0.6950265 5 -0.7419566 0.4772441 5 -0.7319314 -0.00239071 5 -0.6088078 -0.5127048 5 -0.01534795 -0.7049732 5 0.3811415 -0.5334457 5 0.9055673 -0.0204998 10 0.5191002 0.4987326 10 -0.1316087 0.73202 10 -0.4708492 0.5116307 10 -0.4944313 -0.01464481 10 -0.3880431 -0.4783191 10 -0.09401923 -0.6679801 10 0.6019062 -0.4912171 10 0.6495246 -0.01565599 15 0.3537874 0.472983 15 -0.1005114 0.6921377 15 -0.636162 0.4974144 15 -0.7504759 0.04011133 15 -0.4373638 -0.4860009 14.62671 -0.1121075 -0.6974788 14.04869 0.4132551 -0.5234771 14.48221 -29.97497 0.006583441 -3.134761 -30.23981 0.4767297 -3.105412 -30.64737 0.6997179 -3.060247 -31.22373 0.5166056 -2.996376 -31.36645 -0.01473344 -2.980561 -31.08819 -0.4733433 -3.011397 -30.71983 -0.7002821 -3.052217 -30.10426 -0.5132204 -3.120433 -29.00347 0.03491331 4.883505 -29.37721 0.4687944 4.924922 -29.66151 0.7238214 4.956427 -30.36114 0.47282 5.033958 -30.39495 0.02496422 5.037706 -30.34745 -0.5171297 5.032442 -29.69532 -0.6761785 4.960175 -29.36353 -0.5211549 4.923406 -28.44666 0.02774591 9.852408 -28.85239 0.4611753 9.897371 -29.13515 0.725614 9.928706 -29.83632 0.4970136 10.00641 -29.83814 1.04246e-4 10.00661 -29.7145 -0.4929354 9.992908 -29.22911 -0.674386 9.939118 -28.73058 -0.5287739 9.883872 -28.2355 0.01246442 13.97583 -28.31957 0.42523 13.98515 -28.63638 0.5705419 14.90404 -29.0406 0.403918 14.94883 -29.29525 -0.007959034 14.97706 -29.11304 -0.4188635 14.95686 -28.7058 -0.5930463 14.91173 -28.39201 -0.3975511 13.99318 -59.83199 -0.232019 9.979897 -52.48829 -0.232019 9.247116 -45.1446 -0.2320189 8.703552 -37.8009 -0.2320189 8.947717 -29.55761 -0.232019 9.979897 -59.83199 -0.2320191 11.23523 -52.48829 -0.232019 10.50245 -45.1446 -0.232019 9.958885 -37.8009 -0.232019 10.20305 -29.55761 -0.2320191 11.23523 -29.25538 -0.232019 9.979897 -22.46558 -0.232019 9.661358 -15.12188 -0.232019 9.340129 -7.778181 -0.2320189 8.978868 -0.3812466 -0.232019 9.979897 -29.25538 -0.2320191 11.23523 -22.46558 -0.232019 10.91669 -15.12188 -0.232019 10.59546 -7.778181 -0.232019 10.2342 -0.3812466 -0.2320191 11.23523 -59.83199 -0.2320188 6.336919 -52.48829 -0.2320188 5.714882 -45.1446 -0.2320188 4.99753 -37.8009 -0.2320188 5.412207 -30.04593 -0.2320188 6.336919 -59.83199 -0.2320189 7.592252 -52.48829 -0.2320189 6.970215 -45.1446 -0.2320188 6.252863 -37.8009 -0.2320188 6.66754 -30.04593 -0.2320189 7.592252 -59.83199 -0.2320186 2.182663 -52.48829 -0.2320186 1.77772 -45.1446 -0.2320186 1.466053 -37.8009 -0.2320186 1.259337 -30.04593 -0.2320186 2.182663 -59.83199 -0.2320187 3.437996 -52.48829 -0.2320187 3.033053 -45.1446 -0.2320187 2.721386 -37.8009 -0.2320187 2.51467 -30.04593 -0.2320187 3.437996 -29.49455 -0.2320188 6.544697 -22.46558 -0.2320188 5.973685 -15.12188 -0.2320188 5.166391 -7.778181 -0.2320188 5.838619 -0.3812466 -0.2320188 6.544697 -29.49455 -0.2320189 7.80003 -22.46558 -0.2320189 7.229018 -15.12188 -0.2320188 6.421724 -7.778181 -0.2320189 7.093952 -0.3812466 -0.2320189 7.80003 -29.52886 -0.2320187 2.493865 -22.46558 -0.2320186 1.391562 -15.12188 -0.2320186 1.289538 -7.778181 -0.2320186 1.513644 -0.653656 -0.2320187 2.493865 -29.52886 -0.2320187 3.749198 -22.46558 -0.2320187 2.646895 -15.12188 -0.2320187 2.544871 -7.778181 -0.2320187 2.768977 -0.653656 -0.2320187 3.749198</float_array>
+          <technique_common>
+            <accessor source="#geom-FenceSegTwo256-positions-array" count="124" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-FenceSegTwo256-normals">
+          <float_array id="geom-FenceSegTwo256-normals-array" count="468">0.9662706 0.2574721 0.005401821 0.8589445 0.5118771 0.01400051 0.78745 0.6163784 5.11417e-4 0.9894305 0.1435432 -0.0205597 0.4340729 0.9008174 0.01042827 0.379154 0.9252016 0.01563134 -0.7013594 0.7128064 0.001442101 -0.8013574 0.5980699 0.01178074 -0.9776454 -0.2099057 -0.01221692 -0.9918844 -0.1255264 0.02020989 -0.6792573 -0.7338086 -0.01160029 -0.7365397 -0.676315 0.01035893 -0.1553035 -0.9878575 0.004300494 0.0437646 -0.9990287 -0.005139813 0.7732463 -0.6340986 0.003044771 0.6737275 -0.7389341 -0.008225014 0.5992653 0.8005246 -0.006438154 0.9995024 0.03147782 0.002058756 -0.1132169 0.9934063 -0.0180502 -0.8580704 0.5134016 -0.01157483 -0.9951454 -0.09802293 0.008778811 -0.8168685 -0.576624 0.01518359 -0.1565508 -0.9876291 0.00897973 0.5943907 -0.8041517 0.006316829 0.6667156 0.7446375 0.03170635 0.978454 0.2012997 0.04589376 0.04739882 0.9987652 0.01488229 -0.7513495 0.65977 -0.01332438 -0.9979335 -0.05203538 -0.0376965 -0.8239061 -0.5658252 -0.03194519 -0.1635675 -0.9865059 -0.007200481 0.7699195 -0.6376638 0.0246768 0 0 -1 0 0 -0.9999999 0 0 -1 0 0 -0.9999999 0 0 -1 0 0 0.9999999 0 0 -1 0 0 -1 -0.1718401 -0.3939246 0.9029366 0 0 1 0.1965455 -0.2955292 0.9348969 0.6348458 -0.1586949 0.7561659 0.1814888 -0.5363626 0.8242434 0.01871899 -0.9355092 0.352806 -0.07736702 -0.6324189 0.7707534 -0.6364752 -0.3852115 0.6682152 0.9839298 0.1387111 -0.1124337 0.6989933 0.7106547 -0.07986364 0.709422 0.7004293 -0.07822563 0.9914696 0.07332572 -0.107756 0.09117139 0.9957575 -0.01244497 0.1916518 0.9812389 -0.02097322 -0.7175478 0.6911059 0.08658876 -0.791385 0.6052845 0.08567709 -0.9856081 -0.1330046 0.1043372 -0.993171 -0.006324715 0.1164963 -0.6970121 -0.7133368 0.07297112 -0.7529875 -0.6521524 0.08778999 -0.1281494 -0.9914932 0.02278412 0.09543598 -0.9952889 -0.01708494 0.7163401 -0.6929874 -0.08139487 0.6493715 -0.7570492 -0.07206345 0.6974508 0.7131294 -0.07077283 0.9867046 0.1286116 -0.09936398 0.2152821 0.9765391 -0.004988712 -0.7990059 0.5934911 0.09673632 -0.9861964 -0.1229889 0.1108628 -0.7397761 -0.6664046 0.0929318 -0.02976634 -0.9993486 0.02040333 0.6384886 -0.7680277 -0.04965544 0.6395416 0.7673166 -0.0470284 0.9943005 -0.08881626 -0.05897589 -0.2115833 0.9763073 0.04535003 -0.6299353 0.7687594 0.1104105 -0.9893944 0.05111648 0.1359624 -0.6999953 -0.7088885 0.08650842 -0.2012611 -0.9786832 0.04090229 0.670626 -0.7402989 -0.04709794 -0.1101431 -2.81962e-7 -0.9939157 -0.1101439 -1.06634e-6 -0.9939157 -0.1101431 7.61192e-8 -0.9939157 -0.1101431 5.12561e-7 -0.9939157 -0.1101431 3.50443e-7 -0.9939158 -0.1101435 -1.45196e-7 -0.9939157 -0.1101431 3.27204e-8 -0.9939157 -0.1101431 -9.4418e-8 -0.9939157 0.7135848 -0.2117869 0.6677898 0.3923185 -0.8780366 0.2741133 0.6691421 -0.3422455 0.659634 0.1101453 1.67943e-7 0.9939156 0.6641594 0.2781862 0.6939054 0.4023384 0.8577448 0.3199964 0.7319466 0.0990035 0.6741309 0.110144 -1.1209e-6 0.9939156 -6.79627e-10 -0.9999999 -4.74811e-8 -3.39007e-11 -1 -4.74811e-8 -1.01406e-10 -0.9999999 -4.74811e-8 -6.79627e-10 -1 -4.74811e-8 4.00027e-11 -1 -4.74811e-8 5.28811e-11 -0.9999999 -4.74811e-8 1.07737e-11 -1 -4.74811e-8 5.96772e-11 -0.9999999 -4.74811e-8 5.22321e-10 -1 -4.74812e-8 5.22321e-10 -1 -4.74811e-8 -3.29057e-11 -1 -4.74811e-8 -4.05811e-11 -1 -4.74811e-8 -4.01511e-11 -1 -4.74811e-8 -3.29051e-11 -1 -4.74811e-8 -1.81049e-10 -1 -4.74811e-8 -1.73399e-10 -1 -4.74811e-8 2.78004e-11 -1 -4.74811e-8 4.65789e-11 -1 -4.74811e-8 3.8212e-10 -1 -4.74811e-8 3.8212e-10 -1 -4.74811e-8 3.63951e-11 -1 -4.74811e-8 -2.895e-10 -0.9999999 -4.74811e-8 -2.53823e-10 -1 -4.74811e-8 3.63951e-11 -1 -4.74811e-8 4.45165e-11 -1 -4.74811e-8 2.84144e-11 -1 -4.74811e-8 2.96071e-10 -1 -4.74811e-8 2.53988e-10 -1 -4.74811e-8 -1.02782e-10 -1 -4.74811e-8 -1.02782e-10 -1 -4.74811e-8 -5.8908e-10 -0.9999999 -4.74811e-8 -2.78139e-10 -1 -4.74811e-8 -2.96856e-10 -1 -4.74811e-8 -5.8908e-10 -1 -4.74811e-8 3.60947e-10 -1 -4.74811e-8 3.45706e-10 -0.9999999 -4.74811e-8 3.02778e-10 -1 -4.74811e-8 2.79606e-10 -1 -4.74811e-8 -1.11272e-10 -0.9999999 -4.74811e-8 -1.11272e-10 -1 -4.74811e-8 3.82707e-10 -1 -4.74811e-8 -4.35752e-10 -1 -4.74811e-8 -3.42089e-10 -1 -4.74811e-8 3.82707e-10 -0.9999999 -4.74811e-8 -4.32154e-10 -0.9999999 -4.74811e-8 -4.40589e-10 -1 -4.74811e-8 3.89326e-10 -1 -4.74811e-8 4.02099e-10 -1 -4.74811e-8 5.03326e-10 -1 -4.74811e-8 5.03326e-10 -1 -4.74811e-8 -1.08096e-9 -1 -4.74811e-8 1.07731e-10 -0.9999999 -4.681e-8 8.1285e-11 -1 -4.74811e-8 -1.08096e-9 -1 -4.74811e-8 -5.87419e-10 -0.9999999 -3.62558e-8 -6.20447e-10 -1 -3.6243e-8 8.8632e-10 -1 -4.74812e-8 6.98943e-10 -1 -4.68661e-8 2.58056e-10 -1 -4.74811e-8 2.58056e-10 -1 -4.74812e-8</float_array>
+          <technique_common>
+            <accessor source="#geom-FenceSegTwo256-normals-array" count="156" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-FenceSegTwo256-map1">
+          <float_array id="geom-FenceSegTwo256-map1-array" count="483">0.7571478 4.99487e-4 0.3850324 0.9125557 4.99487e-4 0.3607658 0.9612639 4.99487e-4 0.4674071 0.1520402 4.99487e-4 0.5775662 0.2537532 4.99487e-4 0.548842 0.3801683 4.99487e-4 0.447448 0.4732404 4.99487e-4 0.486563 0.6253865 4.99487e-4 0.4994375 0.7509875 0.4493137 0.3936914 0.9416674 0.4493137 0.3170845 0.9939363 0.4493137 0.4553698 0.1678902 0.4493137 0.6280839 0.252921 0.4493137 0.5397422 0.3539496 0.4493137 0.5761508 0.4795067 0.4493137 0.4822863 0.5807764 0.4493137 0.4164354 0.7436666 0.7244071 0.5524517 0.8826635 0.7244071 0.4378859 0.04502142 0.7244071 0.499556 0.1324742 0.7244071 0.4943687 0.2575384 0.7244071 0.3817461 0.3791923 0.7244071 0.450996 0.4606907 0.7244071 0.4678287 0.6282005 0.7244071 0.4847231 0.7421808 0.9995005 0.3817799 0.9140067 0.9995005 0.3580093 0.04077832 0.9995005 0.4684044 0.1550135 0.9995005 0.5752496 0.2446885 0.9995005 0.5523219 0.372418 0.9789625 0.4777737 0.4584539 0.9471608 0.4898942 0.5890626 0.9710121 0.421604 1.15204 4.99487e-4 0.5775662 1.16789 0.4493137 0.6280839 1.045021 0.7244071 0.499556 1.132474 0.7244071 0.4943687 1.040778 0.9995005 0.4684044 0.6761485 0.6770061 -0.2497503 0.7398509 0.4592882 -0.2497503 0.6632497 0.347023 -0.2497503 0.5064709 0.2256553 -0.2497503 0.3332663 0.2642129 -0.2497503 0.2731842 0.5563203 -0.2497503 0.3461653 0.594196 -0.2497503 0.4913567 0.6923221 -0.2497503 0.9995005 0.4906646 0.9995003 0.7884709 0.8419492 0.9995003 0.464296 0.9995005 0.9995003 0.08207077 0.8595132 0.9995003 4.99547e-4 0.5307562 0.9995003 0.2239274 0.1525319 0.6074953 0.4560211 4.99517e-4 4.98772e-4 0.8309051 0.1255899 0.4557457 0.7501123 -0.2014619 0.4521043 0.8856136 -0.2014619 0.4168574 0.9996245 -0.2014619 0.4624101 0.1348912 -0.2014619 0.5142358 0.2545932 -0.2014619 0.4814296 0.3814864 -0.2014619 0.4346782 0.483997 -0.2014619 0.4733152 0.6292852 -0.2014619 0.5033579 0.7560254 0.3364326 0.5074243 0.8896353 0.3364326 0.4010918 0.9782876 0.3364326 0.4829651 0.1454727 0.3364326 0.5096056 0.245307 0.3364326 0.4264584 0.3652493 0.3364326 0.5265362 0.515001 0.3364326 0.4568833 0.6029718 0.3364326 0.4405388 0.754491 0.669433 0.5113512 0.8938032 0.669433 0.3862142 0.9836859 0.669433 0.482204 0.1448257 0.669433 0.5332155 0.251508 0.669433 0.4222048 0.373446 0.669433 0.4751615 0.4952017 0.669433 0.4538667 0.616578 0.669433 0.479593 0.7519373 0.9439313 0.3483144 0.8715243 0.9439313 0.4040752 0.9938702 1.002433 0.3765708 0.1223823 1.002433 0.3690424 0.2534905 1.002433 0.427539 0.3690793 1.002433 0.4164402 0.4872508 1.002433 0.400719 0.6169935 0.9439313 0.3627867 1.134891 -0.2014619 0.5142358 1.145473 0.3364326 0.5096056 1.144826 0.669433 0.5332155 1.122382 1.002433 0.3690424 -3.75509e-4 -0.2014619 0.4624101 -0.1143864 -0.2014619 0.4168574 -0.2498877 -0.2014619 0.4521043 -0.3707148 -0.2014619 0.5033579 0.9995005 0.5203618 4.97818e-4 0.9268758 0.8747426 4.97818e-4 0.5696377 0.9995005 0.9995003 0.2204749 0.8564453 0.9995003 4.99517e-4 0.5028275 0.9995003 0.1578985 0.1500446 0.9995003 0.5096694 4.99487e-4 0.9995003 0.8642993 0.1683422 4.97818e-4 -2.12895 0.08938766 0.5 -0.8001192 0.08938593 0.5 0.5287116 -0.3271226 0.5 1.857543 -0.3271242 0.5 3.12895 0.0893808 0.5 -2.12895 1.327124 0.5 -0.8001192 1.327123 0.5 0.5287117 0.9106141 0.5 1.857543 0.9106123 0.5 3.12895 1.327117 0.5 -2.174985 0.08930007 0.5 -0.8344765 -0.2248428 0.5 0.494459 -0.327299 0.5 1.823395 -0.3273007 0.5 3.161964 0.08929315 0.5 -2.174985 1.327301 0.5 -0.8344765 1.013158 0.5 0.4944591 0.9107018 0.5 1.823395 0.9107 0.5 3.161964 1.327294 0.5 -2.129157 0.2389538 0.5 -0.8002216 -0.374497 0.5 0.5287139 -0.2480318 0.5 1.857649 -0.6729968 0.5 3.129157 0.238947 0.5 -2.129157 1.476955 0.5 -0.8002216 0.8635039 0.5 0.5287139 0.9899689 0.5 1.857649 0.565004 0.5 3.129157 1.476948 0.5 -2.129157 0.2343594 0.5 -0.8002216 -0.1649951 0.5 0.5287139 -0.4723602 0.5 1.857649 0.2343542 0.5 3.129157 0.2343525 0.5 -2.129157 1.47236 0.5 -0.8002216 1.073006 0.5 0.5287139 0.7656407 0.5 1.857649 1.472355 0.5 3.129157 1.472353 0.5 -2.174791 0.1367286 0.5 -0.8344765 0.1367268 0.5 0.494459 -0.3747293 0.5 1.823395 -0.06736779 0.5 3.161964 0.1367216 0.5 -2.174791 1.374729 0.5 -0.8344765 1.374728 0.5 0.4944591 0.8632716 0.5 1.823395 1.170633 0.5 3.161964 1.374722 0.5 -2.112668 0.1322505 0.5 -0.8344765 -0.3702478 0.5 0.4944591 0.1322471 0.5 1.823395 -0.3702512 0.5 3.112668 0.1322437 0.5 -2.112668 1.370251 0.5 -0.8344765 0.867753 0.5 0.4944591 1.370248 0.5 1.823395 0.8677496 0.5 3.112668 1.370244 0.5</float_array>
+          <technique_common>
+            <accessor source="#geom-FenceSegTwo256-map1-array" count="161" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-FenceSegTwo256-vertices">
+          <input semantic="POSITION" source="#geom-FenceSegTwo256-positions"/>
+        </vertices>
+        <triangles material="WoodPost01_3" count="96">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>0 0 0 1 1 1 9 2 9 9 2 9 8 3 8 0 0 0 1 1 1 2 4 2 10 5 10 10 5 10 9 2 9 1 1 1 2 4 2 3 6 32 11 7 33 11 7 33 10 5 10 2 4 2 3 6 3 4 8 4 12 9 12 12 9 12 11 7 11 3 6 3 4 8 4 5 10 5 13 11 13 13 11 13 12 9 12 4 8 4 5 10 5 6 12 6 14 13 14 14 13 14 13 11 13 5 10 5 6 12 6 7 14 7 15 15 15 15 15 15 14 13 14 6 12 6 7 14 7 0 0 0 8 3 8 8 3 8 15 15 15 7 14 7 8 3 8 9 2 9 17 16 17 17 16 17 16 17 16 8 3 8 9 2 9 10 5 10 18 18 34 18 18 34 17 16 17 9 2 9 10 5 10 11 7 33 19 19 35 19 19 35 18 18 34 10 5 10 11 7 11 12 9 12 20 20 20 20 20 20 19 19 19 11 7 11 12 9 12 13 11 13 21 21 21 21 21 21 20 20 20 12 9 12 13 11 13 14 13 14 22 22 22 22 22 22 21 21 21 13 11 13 14 13 14 15 15 15 23 23 23 23 23 23 22 22 22 14 13 14 15 15 15 8 3 8 16 17 16 16 17 16 23 23 23 15 15 15 16 17 16 17 16 17 25 24 25 25 24 25 24 25 24 16 17 16 17 16 17 18 18 34 26 26 36 26 26 36 25 24 25 17 16 17 18 18 18 19 19 19 27 27 27 27 27 27 26 26 26 18 18 18 19 19 19 20 20 20 28 28 28 28 28 28 27 27 27 19 19 19 20 20 20 21 21 21 29 29 29 29 29 29 28 28 28 20 20 20 21 21 21 22 22 22 30 30 30 30 30 30 29 29 29 21 21 21 22 22 22 23 23 23 31 31 31 31 31 31 30 30 30 22 22 22 23 23 23 16 17 16 24 25 24 24 25 24 31 31 31 23 23 23 32 48 53 33 49 54 41 50 62 41 50 62 40 51 61 32 48 53 33 49 54 34 52 55 42 53 63 42 53 63 41 50 62 33 49 54 34 52 55 35 54 85 43 55 86 43 55 86 42 53 63 34 52 55 35 54 56 36 56 57 44 57 65 44 57 65 43 55 64 35 54 56 36 56 57 37 58 58 45 59 66 45 59 66 44 57 65 36 56 57 37 58 58 38 60 59 46 61 67 46 61 67 45 59 66 37 58 58 38 60 59 39 62 60 47 63 68 47 63 68 46 61 67 38 60 59 39 62 60 32 48 53 40 51 61 40 51 61 47 63 68 39 62 60 40 51 61 41 50 62 49 64 70 49 64 70 48 65 69 40 51 61 41 50 62 42 53 63 50 66 71 50 66 71 49 64 70 41 50 62 42 53 63 43 55 86 51 67 87 51 67 87 50 66 71 42 53 63 43 55 64 44 57 65 52 68 73 52 68 73 51 67 72 43 55 64 44 57 65 45 59 66 53 69 74 53 69 74 52 68 73 44 57 65 45 59 66 46 61 67 54 70 75 54 70 75 53 69 74 45 59 66 46 61 67 47 63 68 55 71 76 55 71 76 54 70 75 46 61 67 47 63 68 40 51 61 48 65 69 48 65 69 55 71 76 47 63 68 48 65 69 49 64 70 57 72 78 57 72 78 56 73 77 48 65 69 49 64 70 50 66 71 58 74 79 58 74 79 57 72 78 49 64 70 50 66 71 51 67 87 59 75 88 59 75 88 58 74 79 50 66 71 51 67 72 52 68 73 60 76 81 60 76 81 59 75 80 51 67 72 52 68 73 53 69 74 61 77 82 61 77 82 60 76 81 52 68 73 53 69 74 54 70 75 62 78 83 62 78 83 61 77 82 53 69 74 54 70 75 55 71 76 63 79 84 63 79 84 62 78 83 54 70 75 55 71 76 48 65 69 56 73 77 56 73 77 63 79 84 55 71 76</p>
+        </triangles>
+        <triangles material="WoodPost01_3" count="12">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>6 32 38 5 33 39 4 34 40 4 34 40 3 35 41 2 36 42 2 36 42 1 37 43 0 38 44 4 34 40 2 36 42 0 38 44 6 32 38 4 34 40 0 38 44 7 39 37 6 32 38 0 38 44 38 80 59 37 81 58 36 82 57 36 82 57 35 83 56 34 84 89 34 84 89 33 85 90 32 86 91 36 82 57 34 84 89 32 86 91 38 80 59 36 82 57 32 86 91 39 87 92 38 80 59 32 86 91</p>
+        </triangles>
+        <triangles material="WoodPost01_3" count="12">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>25 40 46 26 41 47 27 42 48 27 42 48 28 43 49 29 44 50 29 44 50 30 45 51 31 46 52 27 42 48 29 44 50 31 46 52 25 40 46 27 42 48 31 46 52 24 47 45 25 40 46 31 46 52 57 88 94 58 89 95 59 90 96 59 90 96 60 91 97 61 92 98 61 92 98 62 93 99 63 94 100 59 90 96 61 92 98 63 94 100 57 88 94 59 90 96 63 94 100 56 95 93 57 88 94 63 94 100</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>64 96 101 65 97 102 70 98 107 70 98 107 69 99 106 64 96 101 65 97 102 66 100 103 71 101 108 71 101 108 70 98 107 65 97 102 66 100 103 67 102 104 72 103 109 72 103 109 71 101 108 66 100 103 67 102 104 68 104 105 73 105 110 73 105 110 72 103 109 67 102 104</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>74 106 111 75 107 112 80 108 117 80 108 117 79 109 116 74 106 111 75 107 112 76 110 113 81 111 118 81 111 118 80 108 117 75 107 112 76 110 113 77 112 114 82 113 119 82 113 119 81 111 118 76 110 113 77 112 114 78 114 115 83 115 120 83 115 120 82 113 119 77 112 114</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>84 116 121 85 117 122 90 118 127 90 118 127 89 119 126 84 116 121 85 117 122 86 120 123 91 121 128 91 121 128 90 118 127 85 117 122 86 120 123 87 122 124 92 123 129 92 123 129 91 121 128 86 120 123 87 122 124 88 124 125 93 125 130 93 125 130 92 123 129 87 122 124</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>94 126 131 95 127 132 100 128 137 100 128 137 99 129 136 94 126 131 95 127 132 96 130 133 101 131 138 101 131 138 100 128 137 95 127 132 96 130 133 97 132 134 102 133 139 102 133 139 101 131 138 96 130 133 97 132 134 98 134 135 103 135 140 103 135 140 102 133 139 97 132 134</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>104 136 141 105 137 142 110 138 147 110 138 147 109 139 146 104 136 141 105 137 142 106 140 143 111 141 148 111 141 148 110 138 147 105 137 142 106 140 143 107 142 144 112 143 149 112 143 149 111 141 148 106 140 143 107 142 144 108 144 145 113 145 150 113 145 150 112 143 149 107 142 144</p>
+        </triangles>
+        <triangles material="BarbedWire_6" count="8">
+          <input semantic="VERTEX" source="#geom-FenceSegTwo256-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-FenceSegTwo256-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-FenceSegTwo256-map1" offset="2" set="1"/>
+          <p>114 146 151 115 147 152 120 148 157 120 148 157 119 149 156 114 146 151 115 147 152 116 150 153 121 151 158 121 151 158 120 148 157 115 147 152 116 150 153 117 152 154 122 153 159 122 153 159 121 151 158 116 150 153 117 152 154 118 154 155 123 155 160 123 155 160 122 153 159 117 152 154</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="geom-Collision" name="Collision">
+      <mesh>
+        <source id="geom-Collision-positions">
+          <float_array id="geom-Collision-positions-array" count="24">-4.333277 -0.1497461 -0.2547741 4.333277 -0.1497461 -0.2547741 -4.333277 0.1497461 -0.2547741 4.333277 0.1497461 -0.2547741 -4.333277 -0.1497461 1.890544 4.333277 -0.1497461 1.890544 -4.333277 0.1497461 1.890544 4.333277 0.1497461 1.890544</float_array>
+          <technique_common>
+            <accessor source="#geom-Collision-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-Collision-normals">
+          <float_array id="geom-Collision-normals-array" count="72">0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 -6.9459e-9 0 -1 -6.9459e-9 0 -1 -6.9459e-9 0 -1 -6.9459e-9 0.9999999 0 0 1 0 0 0.9999999 0 0 1 0 0 0 1 6.9459e-9 0 1 6.9459e-9 0 1 6.9459e-9 0 1 6.9459e-9 -0.9999999 0 0 -1 0 0 -0.9999999 0 0 -1 0 0</float_array>
+          <technique_common>
+            <accessor source="#geom-Collision-normals-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-Collision-map1">
+          <float_array id="geom-Collision-map1-array" count="72">1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 1 0 0 0 0 1 0 0 0 1 0 1 1 0</float_array>
+          <technique_common>
+            <accessor source="#geom-Collision-map1-array" count="24" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-Collision-vertices">
+          <input semantic="POSITION" source="#geom-Collision-positions"/>
+        </vertices>
+        <triangles material="ColorMaterial" count="12">
+          <input semantic="VERTEX" source="#geom-Collision-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-Collision-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#geom-Collision-map1" offset="2" set="1"/>
+          <p>0 0 0 2 1 2 3 2 3 3 2 3 1 3 1 0 0 0 4 4 4 5 5 5 7 6 7 7 6 7 6 7 6 4 4 4 0 8 8 1 9 9 5 10 11 5 10 11 4 11 10 0 8 8 1 12 12 3 13 13 7 14 15 7 14 15 5 15 14 1 12 12 3 16 16 2 17 17 6 18 19 6 18 19 7 19 18 3 16 16 2 20 20 0 21 21 4 22 23 4 22 23 6 23 22 2 20 20</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="_td_BarbedWire_02_png">
+      <init_from>file:///C:/Users/RonMain/Documents/3dsmax/sceneassets/Fences/3td_BarbedWire_02.png</init_from>
+    </image>
+    <image id="_td_woodPost_01_1024_jpg">
+      <init_from>file:///C:/Users/RonMain/Documents/3dsmax/sceneassets/Fences/3td_woodPost_01_1024.jpg</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-Base01" name="Base01">
+        <matrix>1 0 0 0.2965078 0 1 0 0.1673099 0 0 1 0 0 0 0 1</matrix>
+        <node id="node-Start01" name="Start01">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="node-FenceSegTwo256" name="FenceSegTwo256">
+            <matrix>0.1410915 0 0 0.0163908 0 0.1410915 0 0.07717624 0 0 0.1410915 0.2751112 0 0 0 1</matrix>
+            <node>
+              <matrix>1 0 0 30.08153 0 1 0 -0.01246757 0 0 1 -0.2751112 0 0 0 1</matrix>
+              <instance_geometry url="#geom-FenceSegTwo256">
+                <bind_material>
+                  <technique_common>
+                    <instance_material symbol="WoodPost01_3" target="#WoodPost01-material">
+                      <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+                    </instance_material>
+                    <instance_material symbol="BarbedWire_6" target="#BarbedWire-material">
+                      <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+                      <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+                    </instance_material>
+                  </technique_common>
+                </bind_material>
+              </instance_geometry>
+            </node>
+          </node>
+          <node id="node-Collision" name="Collision">
+            <matrix>1 0 0 0.1222136 0 1 0 0.09056765 0 0 1 0 0 0 0 1</matrix>
+            <instance_geometry url="#geom-Collision">
+              <bind_material>
+                <technique_common>
+                  <instance_material symbol="ColorMaterial" target="#ColorEffectR176G26B26-material"/>
+                </technique_common>
+              </bind_material>
+            </instance_geometry>
+          </node>
+        </node>
+        <node id="node-detail256" name="detail256">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>

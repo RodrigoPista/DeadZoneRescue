@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour, IDamageable
 {
@@ -12,4 +12,4 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     {
         Health -= amount;
     }
-}
+}*/
