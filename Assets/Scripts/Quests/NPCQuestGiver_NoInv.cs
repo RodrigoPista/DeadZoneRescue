@@ -44,6 +44,10 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
     [SerializeField] private string questDesc = "Consigue la lata de comida en el mercado";
     [SerializeField] private int questTotal = 1;
 
+    [Header("Escena A Cargar")]
+    [SerializeField] private bool loadSceneOnComplete = false;
+    [SerializeField] private string nextSceneName = ""; // escribir el nombre exacto de la escena
+
     // -------- Lifecycle / Autowire --------
     void OnEnable()
     {
@@ -141,6 +145,15 @@ public class NPCQuestGiver_NoInv : MonoBehaviour, IInteractable
 
                     dlg?.Show(completedText);
                     trk?.CompleteById(questId, "Completada");
+
+                    if (loadSceneOnComplete)
+                    {
+                        var tracker = FindObjectOfType<QuestTrackerUI>(true);
+                        if (tracker) tracker.gameObject.SetActive(false);
+
+                        Time.timeScale = 1f;
+                        UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
+                    }
                 }
                 else
                 {

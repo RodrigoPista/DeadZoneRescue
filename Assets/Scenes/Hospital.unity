@@ -7548,8 +7548,16 @@ PrefabInstance:
       value: P_NPC_DrVega
       objectReference: {fileID: 0}
     - target: {fileID: 4574104488547253814, guid: f82a9dfa6c638824f892ee428f14d171, type: 3}
+      propertyPath: nextSceneName
+      value: Victoria
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574104488547253814, guid: f82a9dfa6c638824f892ee428f14d171, type: 3}
       propertyPath: requiredFlagName
       value: HasCura
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574104488547253814, guid: f82a9dfa6c638824f892ee428f14d171, type: 3}
+      propertyPath: loadSceneOnComplete
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7588709768145236760, guid: f82a9dfa6c638824f892ee428f14d171, type: 3}
       propertyPath: m_LocalPosition.x

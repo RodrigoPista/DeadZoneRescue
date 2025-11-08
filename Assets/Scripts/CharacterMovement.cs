@@ -255,6 +255,8 @@ public class CharacterMovement : HealthSystem
         // Si la vida llega a 0
         if (IsDead)
         {
+            var tracker = FindObjectOfType<QuestTrackerUI>(true);
+            if (tracker) tracker.gameObject.SetActive(false);
             SceneManager.LoadScene("Derrota"); // poné el nombre exacto de la escena
         }
     }
